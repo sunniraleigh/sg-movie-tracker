@@ -24,23 +24,23 @@ An app where users can keep track of the Studio Ghibli movies they’ve watched,
 
 ## Roadmap
 
-### MVP
-- User can login and log out  
+### MVP 
 - User can view a list of all movies  
 - User can add a movie to watched or want to watch  
-- User can explore the movie (read more about it, data viz?)  
+- User can explore the movie  
 - User can rate a movie  
 	- User rating impacts site rating  
 - User can write and view reviews  
-- User can edit their reviews  
-- User can upvote or take away their vote from a review  
+- User can search for a movie by title  
+- User can login and log out 
 
 ### 2.0
-- UI looks professional  
-- Visuals are in place  
-- React + Ajax  
+- User can upvote or take away their vote from a review  
+- User can sort and filter movie index
+- User can edit their reviews
 
 ### 3.0
 - Expand to all movies rather than just Studio Ghibli  
 - Oauth  
 - Share watchlists on social media platforms  
+- Data viz included in movie exploration
