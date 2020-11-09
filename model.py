@@ -16,6 +16,11 @@ class User(db.model):
     email = db.Column(db.String, unique = True)
     password = db.Column(db.String)
 
+    ratings = db.Relationship('Rating')
+    reviews = db.Relationship('Review')
+    movies_seen = db.Relationship('MovieSeen')
+    want_to_watch = db.Relationship('WantToWatch')
+
     def __repr__(self):
         return f'<User user_id={self.user_id} username={self.username}>'
 
@@ -33,6 +38,12 @@ class Movie(db.model):
     api_movie_id = db.Column(db.Integer)
     image_url = db.Column(db.String)
 
+    cast_crew = db.Relationship('CastCrew')
+    ratings = db.Relationship('Rating')
+    reviews = db.Relationship('Review')
+    movies_seen = db.Relationship('MovieSeen')
+    want_to_watch = db.Relationship('WantToWatch')
+
     def __repr__(self):
         return f'<Movie movie_id={self.movie_id} title={self.title}>'
 
@@ -42,9 +53,11 @@ class CastCrew(db.model):
     __tablename__ = 'cast_crew'
 
     cc_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
-    movie_id = db.Column(db.Integer)
+    movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
     name = db.Column(db.String)
     position = db.Column(db.String)
+
+    movies = db.Relationship('Movie')
 
     def __repr__(self):
         return f'<CastCrew cc_id={self.cc_id} name={self.name}>'
@@ -55,9 +68,12 @@ class Rating(db.model):
     __tablename__ = 'ratings'
 
     rating_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
-    user_id = db.Column(db.Integer)
-    movie_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
     score = db.Column(db.Integer)
+
+    users = db.Relationship('User')
+    movies = db.Relationship('Movie')
 
     def __repr__(self):
         return f'<Rating rating_id={self.rating_id} score={self.score}>'
@@ -69,9 +85,12 @@ class Review(db.model):
 
     review_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
     timestamp = db.Column(db.DateTime)
-    user_id = db.Column(db.Integer)
-    movie_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
     review_content = db.Column(db.Integer)
+
+    users = db.Relationship('User')
+    movies = db.Relationship('Movie')
 
     def __repr__(self):
         return f'<Review review_id={self.review_id} user_id={self.user_id} movie_id={self.movie_id}>'
@@ -82,8 +101,11 @@ class MovieSeen(db.model):
     __tablename__ = 'movies_seen'
 
     movie_seen_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
-    user_id = db.Column(db.Integer)
-    movie_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
+
+    users = db.Relationship('User')
+    movies = db.Relationship('Movie')
 
     def __repr__(self):
         return f'<MovieSeen movie_seen_id={self.movie_seen_id} user_id={self.user_id} movie_id={self.movie_id}>'
@@ -94,8 +116,11 @@ class WantToWatch(db.model):
     __tablename__ = 'want_to_watch'
 
     want_to_watch_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
-    user_id = db.Column(db.Integer)
-    movie_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
+
+    users = db.Relationship('User')
+    movies = db.Relationship('Movie')
 
     def __repr__(self):
         return f'<WantToWatch want_to_watch_id={self.want_to_watch_id} user_id={self.user_id} movie_id={self.movie_id}>'
