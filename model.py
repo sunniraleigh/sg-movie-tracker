@@ -4,7 +4,74 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-# add models here!
+# --
+
+class User(db.model):
+    """A user."""
+
+    __tablename__ = 'users'
+
+    # define columns
+
+    def __repr__(self):
+        return f'<>'
+
+class Movie(db.model):
+    """A movie."""
+
+    __tablename__ = 'movies'
+
+    # define columns
+
+    def __repr__(self):
+        return f'<>'
+
+class CastCrew(db.model):
+    """A cast or crew member of a movie."""
+
+    __tablename__ = 'cast_crew'
+
+    # define columns
+
+    def __repr__(self):
+        return f'<>'
+
+class Rating(db.model):
+    """A rating."""
+
+    __tablename__ = 'ratings'
+
+    # define columns
+
+    def __repr__(self):
+        return f'<>'
+
+class Review(db.model):
+    """A user review."""
+
+    __tablename__ = 'reviews'
+
+    # define columns
+
+    def __repr__(self):
+        return f'<>'
+
+class MovieSeen(db.model):
+    """A movie that has been watched by a user."""
+
+    __tablename__ = 'movies_seen'
+
+    # define columns
+
+    def __repr__(self):
+        return f'<>'
+
+class WantToWatch(db.model):
+    """A movie that a user wants to watch."""
+
+    __tablename__ = 'want_to_watch'
+
+# --
 
 def connect_to_db(flask_app, db_uri='postgresql:///ratings', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
