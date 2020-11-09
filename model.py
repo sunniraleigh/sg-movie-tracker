@@ -17,7 +17,7 @@ class User(db.model):
     password = db.Column(db.String)
 
     def __repr__(self):
-        return f'<>'
+        return f'<User user_id={self.user_id} username={self.username}>'
 
 class Movie(db.model):
     """A movie."""
@@ -34,7 +34,7 @@ class Movie(db.model):
     image_url = db.Column(db.String)
 
     def __repr__(self):
-        return f'<>'
+        return f'<Movie movie_id={self.movie_id} title={self.title}>'
 
 class CastCrew(db.model):
     """A cast or crew member of a movie."""
@@ -47,7 +47,7 @@ class CastCrew(db.model):
     position = db.Column(db.String)
 
     def __repr__(self):
-        return f'<>'
+        return f'<CastCrew cc_id={self.cc_id} name={self.name}>'
 
 class Rating(db.model):
     """A rating."""
@@ -60,7 +60,7 @@ class Rating(db.model):
     score = db.Column(db.Integer)
 
     def __repr__(self):
-        return f'<>'
+        return f'<Rating rating_id={self.rating_id} score={self.score}>'
 
 class Review(db.model):
     """A user review."""
@@ -74,7 +74,7 @@ class Review(db.model):
     review_content = db.Column(db.Integer)
 
     def __repr__(self):
-        return f'<>'
+        return f'<Review review_id={self.review_id} user_id={self.user_id} movie_id={self.movie_id}>'
 
 class MovieSeen(db.model):
     """A movie that has been watched by a user."""
@@ -86,19 +86,19 @@ class MovieSeen(db.model):
     movie_id = db.Column(db.Integer)
 
     def __repr__(self):
-        return f'<>'
+        return f'<MovieSeen movie_seen_id={self.movie_seen_id} user_id={self.user_id} movie_id={self.movie_id}>'
 
 class WantToWatch(db.model):
     """A movie that a user wants to watch."""
 
     __tablename__ = 'want_to_watch'
 
-    movie_seen_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    want_to_watch_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
     user_id = db.Column(db.Integer)
     movie_id = db.Column(db.Integer)
 
     def __repr__(self):
-        return f'<>'
+        return f'<WantToWatch want_to_watch_id={self.want_to_watch_id} user_id={self.user_id} movie_id={self.movie_id}>'
 
 # --
 
