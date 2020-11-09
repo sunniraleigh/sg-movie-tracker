@@ -11,7 +11,10 @@ class User(db.model):
 
     __tablename__ = 'users'
 
-    # define columns
+    user_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    username = db.Column(db.String(20), unique = True)
+    email = db.Column(db.String, unique = True)
+    password = db.Column(db.String)
 
     def __repr__(self):
         return f'<>'
@@ -21,7 +24,14 @@ class Movie(db.model):
 
     __tablename__ = 'movies'
 
-    # define columns
+    movie_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    title = db.Column(db.String)
+    year_released = db.Column(db.String(4))
+    overview = db.Column(db.Text)
+    duration = db.Column(db.Integer)
+    site_rating = db.Column(db.Integer)
+    api_movie_id = db.Column(db.Integer)
+    image_url = db.Column(db.String)
 
     def __repr__(self):
         return f'<>'
@@ -31,7 +41,10 @@ class CastCrew(db.model):
 
     __tablename__ = 'cast_crew'
 
-    # define columns
+    cc_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    movie_id = db.Column(db.Integer)
+    name = db.Column(db.String)
+    position = db.Column(db.String)
 
     def __repr__(self):
         return f'<>'
@@ -41,7 +54,10 @@ class Rating(db.model):
 
     __tablename__ = 'ratings'
 
-    # define columns
+    rating_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    user_id = db.Column(db.Integer)
+    movie_id = db.Column(db.Integer)
+    score = db.Column(db.Integer)
 
     def __repr__(self):
         return f'<>'
@@ -51,7 +67,11 @@ class Review(db.model):
 
     __tablename__ = 'reviews'
 
-    # define columns
+    review_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    timestamp = db.Column(db.DateTime)
+    user_id = db.Column(db.Integer)
+    movie_id = db.Column(db.Integer)
+    review_content = db.Column(db.Integer)
 
     def __repr__(self):
         return f'<>'
@@ -61,7 +81,9 @@ class MovieSeen(db.model):
 
     __tablename__ = 'movies_seen'
 
-    # define columns
+    movie_seen_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    user_id = db.Column(db.Integer)
+    movie_id = db.Column(db.Integer)
 
     def __repr__(self):
         return f'<>'
@@ -70,6 +92,13 @@ class WantToWatch(db.model):
     """A movie that a user wants to watch."""
 
     __tablename__ = 'want_to_watch'
+
+    movie_seen_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    user_id = db.Column(db.Integer)
+    movie_id = db.Column(db.Integer)
+
+    def __repr__(self):
+        return f'<>'
 
 # --
 
