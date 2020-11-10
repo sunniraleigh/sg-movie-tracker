@@ -6,7 +6,7 @@ db = SQLAlchemy()
 
 # --
 
-class User(db.model):
+class User(db.Model):
     """A user."""
 
     __tablename__ = 'users'
@@ -16,15 +16,15 @@ class User(db.model):
     email = db.Column(db.String, unique = True)
     password = db.Column(db.String)
 
-    ratings = db.Relationship('Rating')
-    reviews = db.Relationship('Review')
-    movies_seen = db.Relationship('MovieSeen')
-    want_to_watch = db.Relationship('WantToWatch')
+    ratings = db.relationship('Rating')
+    reviews = db.relationship('Review')
+    movies_seen = db.relationship('MovieSeen')
+    want_to_watch = db.relationship('WantToWatch')
 
     def __repr__(self):
         return f'<User user_id={self.user_id} username={self.username}>'
 
-class Movie(db.model):
+class Movie(db.Model):
     """A movie."""
 
     __tablename__ = 'movies'
@@ -38,16 +38,16 @@ class Movie(db.model):
     api_movie_id = db.Column(db.Integer)
     image_url = db.Column(db.String)
 
-    cast_crew = db.Relationship('CastCrew')
-    ratings = db.Relationship('Rating')
-    reviews = db.Relationship('Review')
-    movies_seen = db.Relationship('MovieSeen')
-    want_to_watch = db.Relationship('WantToWatch')
+    cast_crew = db.relationship('CastCrew')
+    ratings = db.relationship('Rating')
+    reviews = db.relationship('Review')
+    movies_seen = db.relationship('MovieSeen')
+    want_to_watch = db.relationship('WantToWatch')
 
     def __repr__(self):
         return f'<Movie movie_id={self.movie_id} title={self.title}>'
 
-class CastCrew(db.model):
+class CastCrew(db.Model):
     """A cast or crew member of a movie."""
 
     __tablename__ = 'cast_crew'
@@ -57,12 +57,12 @@ class CastCrew(db.model):
     name = db.Column(db.String)
     position = db.Column(db.String)
 
-    movies = db.Relationship('Movie')
+    movies = db.relationship('Movie')
 
     def __repr__(self):
         return f'<CastCrew cc_id={self.cc_id} name={self.name}>'
 
-class Rating(db.model):
+class Rating(db.Model):
     """A rating."""
 
     __tablename__ = 'ratings'
@@ -72,13 +72,13 @@ class Rating(db.model):
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
     score = db.Column(db.Integer)
 
-    users = db.Relationship('User')
-    movies = db.Relationship('Movie')
+    users = db.relationship('User')
+    movies = db.relationship('Movie')
 
     def __repr__(self):
         return f'<Rating rating_id={self.rating_id} score={self.score}>'
 
-class Review(db.model):
+class Review(db.Model):
     """A user review."""
 
     __tablename__ = 'reviews'
@@ -89,13 +89,13 @@ class Review(db.model):
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
     review_content = db.Column(db.Integer)
 
-    users = db.Relationship('User')
-    movies = db.Relationship('Movie')
+    users = db.relationship('User')
+    movies = db.relationship('Movie')
 
     def __repr__(self):
         return f'<Review review_id={self.review_id} user_id={self.user_id} movie_id={self.movie_id}>'
 
-class MovieSeen(db.model):
+class MovieSeen(db.Model):
     """A movie that has been watched by a user."""
 
     __tablename__ = 'movies_seen'
@@ -104,13 +104,13 @@ class MovieSeen(db.model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
 
-    users = db.Relationship('User')
-    movies = db.Relationship('Movie')
+    users = db.relationship('User')
+    movies = db.relationship('Movie')
 
     def __repr__(self):
         return f'<MovieSeen movie_seen_id={self.movie_seen_id} user_id={self.user_id} movie_id={self.movie_id}>'
 
-class WantToWatch(db.model):
+class WantToWatch(db.Model):
     """A movie that a user wants to watch."""
 
     __tablename__ = 'want_to_watch'
@@ -119,8 +119,8 @@ class WantToWatch(db.model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
 
-    users = db.Relationship('User')
-    movies = db.Relationship('Movie')
+    users = db.relationship('User')
+    movies = db.relationship('Movie')
 
     def __repr__(self):
         return f'<WantToWatch want_to_watch_id={self.want_to_watch_id} user_id={self.user_id} movie_id={self.movie_id}>'
