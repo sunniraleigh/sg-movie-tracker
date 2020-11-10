@@ -28,7 +28,7 @@ fake = Faker()
 # Generate 10 random movies
 movies_in_db = [] # an empty list just for testing
 for n in range(10):
-    title = fake.random_object_name()
+    title = fake.name()
     year_released = fake.year()
     overview = fake.text()
     duration = randint(100, 200)
@@ -42,10 +42,23 @@ for n in range(10):
     movies_in_db.append(movie)
 
 # CastCrew
+# 100 random crew members
 positions = ['actor', 'director', 'producer']
+for n in range(10):
+    movie_id = choice(movies_in_db).movie_id
+    name = fake.name()
+    position = choice(positions)
+
+    crud.create_cast_crew(movie_id, name, position)
 
 # User
-# Rating
-# Review
-# MovieSeen
-# WantToWatch
+    # Rating
+    # Review
+    # MovieSeen
+    # WantToWatch
+
+# randomly generate 10 users each with 5 ratings and 2 reviews
+# users also have 3 movies each on movieseen and watchlist
+for n in range(10):
+    username = fake.user_name()
+
