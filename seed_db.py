@@ -8,7 +8,7 @@ from datetime import datetime
 from faker import Faker
 
 # App files
-import model
+from model import Movie, User, CastCrew, Rating, Review, MovieSeen, WantToWatch
 import crud
 import server
 
@@ -22,7 +22,6 @@ model.db.create_all()
 
 # Seed DB with fake data
 fake = Faker()
-
 
 # Movie
 # Generate 10 random movies

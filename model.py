@@ -87,7 +87,7 @@ class Review(db.Model):
     timestamp = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
-    review_content = db.Column(db.Integer)
+    review_content = db.Column(db.Text)
 
     users = db.relationship('User')
     movies = db.relationship('Movie')
