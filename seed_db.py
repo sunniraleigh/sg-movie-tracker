@@ -61,4 +61,32 @@ for n in range(10):
 # users also have 3 movies each on movieseen and watchlist
 for n in range(10):
     username = fake.user_name()
+    email = fake.email()
+    password = "testpw"
+
+    user = crud.create_user(username, email, password)
+    user_id = user.user_id
+
+    for n in range(5):
+        movie_id = choice(movies_in_db).movie_id
+        score = randint(1,5)
+
+        crud.create_rating(user_id, movie_id, score)
+    
+    for n in range(2):
+        timestamp = fake.past_datetime(start_date='-30d')
+        movie_id = choice(movies_in_db).movie_id
+        review_content = fake.text()
+
+        crud.create_review(timestamp, user_id, movie_id, review_content)
+    
+    for n in range(3):
+        movie_id = choice(movies_in_db).movie_id
+
+        crud.create_movie_seen(user_id, movie_id)
+    
+    for n in range(3):
+        movie_id = choice(movies_in_db).movie_id
+        
+        crud.create_want_to_watch(user_id, movie_id)
 
