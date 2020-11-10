@@ -78,3 +78,7 @@ def create_want_to_watch(user_id, movie_id):
     db.session.commit()
 
     return want_to_watch
+
+if __name__ == '__main__':
+    from server import app
+    connect_to_db(app)
