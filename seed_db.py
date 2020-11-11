@@ -27,13 +27,13 @@ fake = Faker()
 # Generate 10 random movies
 movies_in_db = [] # an empty list just for testing
 for n in range(10):
-    title = fake.name()
-    year_released = fake.year()
-    overview = fake.text()
-    duration = randint(100, 200)
+    title = fake.name() # pull from SG API - title
+    year_released = fake.year() # pull from SG API - release_date
+    overview = fake.text() # pull from SG API - description
+    duration = randint(100, 200) #IMDB API
     site_rating = randint(1,5)
-    api_movie_id = randint(1000, 2000)
-    image_url = fake.file_path()
+    api_movie_id = fake.sentence() # SG API - id 
+    image_url = fake.file_path() # IMDB API
 
     movie = crud.create_movie(title, year_released, overview, duration, 
                         site_rating, api_movie_id, image_url)
