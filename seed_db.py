@@ -10,7 +10,7 @@ import imdb
 import requests
 
 # App files
-from model import Movie, User, CastCrew, Rating, Review, MovieSeen, WantToWatch
+import model
 import crud
 import server
 
@@ -27,34 +27,26 @@ fake = Faker()
 
 # Movie
 # Generate 10 random movies
-movies_in_db = [] # an empty list just for testing
-for n in range(10):
-    title = fake.name() # pull from SG API - title
-    year_released = fake.year() # pull from SG API - release_date
-    overview = fake.text() # pull from SG API - description
-    duration = randint(100, 200) #IMDB API
-    api_movie_id = fake.sentence() # SG API - id 
-    image_url = fake.file_path() # IMDB API
-
-    movie = crud.create_movie(title, year_released, overview, duration, 
-                        site_rating, api_movie_id, image_url)
-    
-    movies_in_db.append(movie)
+movies_in_db = [] # an empty list for randomizing user data
 
 # Retrive movies from SG API
 res = requests.get('https://ghibliapi.herokuapp.com/films')
 search_results = res.json()
 
+# Create IMDb Object
+ia = imdb.IMDb()
+
 for movie in search_results:
+    movie_imdb = ia.search_movie(movie['title'])[0] # first movie in imdb db with title from sg api
+
     title = movie['title']
     year_released = movie['release_date']
     overview = movie['description']
-    duration = 0
+    duration = movie_imdb.get('runtime', None)
     api_movie_id = movie['id']
-    image_url = 'tbd'
+    image_url = movie_imdb['full-size cover url']
     
-    movie = crud.create_movie(title, year_released, overview, duration, 
-                        site_rating, api_movie_id, image_url)
+    movie = crud.create_movie(title, year_released, overview, duration, api_movie_id, image_url)
     
     movies_in_db.append(movie)
 

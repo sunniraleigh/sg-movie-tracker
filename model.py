@@ -34,7 +34,7 @@ class Movie(db.Model):
     year_released = db.Column(db.String(4))
     overview = db.Column(db.Text)
     duration = db.Column(db.Integer)
-    api_movie_id = db.Column(db.Integer)
+    api_movie_id = db.Column(db.String)
     image_url = db.Column(db.String)
 
     cast_crew = db.relationship('CastCrew')
