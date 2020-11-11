@@ -6,6 +6,8 @@ import json
 from random import choice, randint
 from datetime import datetime
 from faker import Faker
+import imdb
+import requests
 
 # App files
 from model import Movie, User, CastCrew, Rating, Review, MovieSeen, WantToWatch
@@ -31,10 +33,26 @@ for n in range(10):
     year_released = fake.year() # pull from SG API - release_date
     overview = fake.text() # pull from SG API - description
     duration = randint(100, 200) #IMDB API
-    site_rating = randint(1,5)
     api_movie_id = fake.sentence() # SG API - id 
     image_url = fake.file_path() # IMDB API
 
+    movie = crud.create_movie(title, year_released, overview, duration, 
+                        site_rating, api_movie_id, image_url)
+    
+    movies_in_db.append(movie)
+
+# Retrive movies from SG API
+res = requests.get('https://ghibliapi.herokuapp.com/films')
+search_results = res.json()
+
+for movie in search_results:
+    title = movie['title']
+    year_released = movie['release_date']
+    overview = movie['description']
+    duration = 0
+    api_movie_id = movie['id']
+    image_url = 'tbd'
+    
     movie = crud.create_movie(title, year_released, overview, duration, 
                         site_rating, api_movie_id, image_url)
     

@@ -14,10 +14,10 @@ def create_user(username, email, password):
     return user
 
 # create a movie
-def create_movie(title, year_released, overview, duration, site_rating, api_movie_id, image_url):
+def create_movie(title, year_released, overview, duration, api_movie_id, image_url):
     """Create and return a movie."""
 
-    movie = Movie(title=title, year_released=year_released, overview=overview, duration=duration, site_rating=site_rating, api_movie_id=api_movie_id, image_url=image_url)
+    movie = Movie(title=title, year_released=year_released, overview=overview, duration=duration, api_movie_id=api_movie_id, image_url=image_url)
 
     db.session.add(movie)
     db.session.commit()
