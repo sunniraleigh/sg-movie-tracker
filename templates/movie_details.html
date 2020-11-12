@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %} Studio Ghibli Movie Tracker {% endblock %}
+{% block body %}
+<h1>{{ movie.title }}</h1>
+<img src="{{ movie.image_url }}">
+<p>
+    Year Released: {{ movie.year_released }}
+    Overview: <p>{{ movie.overview }}</p>
+    Director: tbd
+    Producer: tbd
+    Duration: {{movie.duration}}
+</p>
+{% endblock %}
