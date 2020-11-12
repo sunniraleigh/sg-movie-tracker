@@ -29,6 +29,32 @@ def return_movies():
 
     return Movie.query.all()
 
+def return_movie_by_id(movie_id):
+    """Return a single movie by id."""
+
+    return Movie.query.get(movie_id)
+
+def return_director_by_movie(movie_id):
+    """Return the director of a movie."""
+
+    return CastCrew.query.filter( (CastCrew.movie_id == movie_id) & (CastCrew.position == "director")).all()
+
+def return_producer_by_movie(movie_id):
+    """Return the producer of a movie."""
+
+    return CastCrew.query.filter( (CastCrew.movie_id == movie_id) & (CastCrew.position == "producer") ).all()
+    
+def return_movie_site_rating(movie_id):
+    """Return the site rating of a movie."""
+    
+    sum_rating = 0
+    ratings = Rating.query.filter(Rating.movie_id==movie_id).all()
+
+    for rating in ratings:
+        sum_rating += rating.score
+    
+    return sum_rating/len(ratings)
+
 # create a cast or crew member
 def create_cast_crew(movie_id, name, position):
     """Create and return a cast or crew member."""
