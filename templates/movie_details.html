@@ -6,8 +6,17 @@
 <p>
     Year Released: {{ movie.year_released }}
     Overview: <p>{{ movie.overview }}</p>
-    Director: tbd
-    Producer: tbd
+    Director: {{ director }}
+    Producer: {{ producer }}
     Duration: {{movie.duration}}
+    Site Rating: {{ site_rating }}
 </p>
+{ for review in reviews }
+<div>
+    <p>
+        { review.users.username }
+        { review.timestamp }
+    </p>
+</div>
+{ endfor }
 {% endblock %}
