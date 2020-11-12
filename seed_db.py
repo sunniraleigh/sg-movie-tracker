@@ -36,6 +36,7 @@ search_results = res.json()
 # Create IMDb Object
 ia = imdb.IMDb()
 
+# Seed movies and cast_crew tables
 for movie in search_results:
     movie_imdb = ia.search_movie(movie['title'])[0] # first movie in imdb db with title from sg api
 
@@ -45,20 +46,16 @@ for movie in search_results:
     duration = movie_imdb.get('runtime', None)
     api_movie_id = movie['id']
     image_url = movie_imdb['full-size cover url']
+
+    director = movie.get('director', None)
+    producer = movie.get('producer', None)
     
     movie = crud.create_movie(title, year_released, overview, duration, api_movie_id, image_url)
     
+    crud.create_cast_crew(movie.movie_id, director, 'director')
+    crud.create_cast_crew(movie.movie_id, producer, 'producer')
+    
     movies_in_db.append(movie)
-
-# CastCrew
-# 100 random crew members
-positions = ['actor', 'director', 'producer']
-for n in range(10):
-    movie_id = choice(movies_in_db).movie_id
-    name = fake.name()
-    position = choice(positions)
-
-    crud.create_cast_crew(movie_id, name, position)
 
 # User
     # Rating
