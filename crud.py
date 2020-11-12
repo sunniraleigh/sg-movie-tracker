@@ -24,6 +24,11 @@ def create_movie(title, year_released, overview, duration, api_movie_id, image_u
 
     return movie
 
+def return_movies():
+    """Return all movies."""
+
+    return Movie.query.all()
+
 # create a cast or crew member
 def create_cast_crew(movie_id, name, position):
     """Create and return a cast or crew member."""

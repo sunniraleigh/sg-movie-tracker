@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% block title %} Studio Ghibli Movie Tracker {% endblock %}
 {% block body %}
-Homepage
+<h1>Studio Ghibli Movie Tracker</h1>
+{% for movie in movies %}
+<div>
+    <img src="{{ movie.image_url }}">
+    <h2>{{ movie.title }}</h2>
+</div>
+{% endfor %}
 {% endblock %}

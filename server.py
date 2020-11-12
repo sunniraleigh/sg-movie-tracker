@@ -16,7 +16,9 @@ app.jinja_env.undefined = StrictUndefined
 def homepage():
     """Route to homepage."""
 
-    return render_template('homepage.html')
+    movies = crud.return_movies()
+
+    return render_template('homepage.html', movies=movies)
 
 if __name__ == '__main__':
     connect_to_db(app)
