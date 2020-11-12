@@ -6,17 +6,18 @@
 <p>
     Year Released: {{ movie.year_released }}
     Overview: <p>{{ movie.overview }}</p>
-    Director: {{ director }}
-    Producer: {{ producer }}
+    Director: {% for castcrew in director %} {{ castcrew.name }}{% endfor %}
+    Producer: {% for castcrew in director %} {{ castcrew.name }} {% endfor %}
     Duration: {{movie.duration}}
     Site Rating: {{ site_rating }}
 </p>
-{ for review in reviews }
+{% for review in movie.reviews %}
 <div>
     <p>
-        { review.users.username }
-        { review.timestamp }
+        {{ review.users.username }}
+        {{ review.timestamp }}
+        {{ review.review_content }}
     </p>
 </div>
-{ endfor }
+{% endfor %}
 {% endblock %}

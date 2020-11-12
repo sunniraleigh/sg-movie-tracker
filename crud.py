@@ -43,17 +43,6 @@ def return_producer_by_movie(movie_id):
     """Return the producer of a movie."""
 
     return CastCrew.query.filter( (CastCrew.movie_id == movie_id) & (CastCrew.position == "producer") ).all()
-    
-def return_movie_site_rating(movie_id):
-    """Return the site rating of a movie."""
-    
-    sum_rating = 0
-    ratings = Rating.query.filter(Rating.movie_id==movie_id).all()
-
-    for rating in ratings:
-        sum_rating += rating.score
-    
-    return sum_rating/len(ratings)
 
 # create a cast or crew member
 def create_cast_crew(movie_id, name, position):
@@ -77,6 +66,17 @@ def create_rating(user_id, movie_id, score):
 
     return rating
 
+def return_movie_site_rating(movie_id):
+    """Return the site rating of a movie."""
+    
+    sum_rating = 0
+    ratings = Rating.query.filter(Rating.movie_id==movie_id).all()
+
+    for rating in ratings:
+        sum_rating += rating.score
+    
+    return sum_rating/len(ratings)
+
 # create a review
 def create_review(timestamp, user_id, movie_id, review_content):
     """Create and return a review."""
@@ -87,6 +87,11 @@ def create_review(timestamp, user_id, movie_id, review_content):
     db.session.commit()
 
     return review
+
+# def return_reviews_by_movie_id(movie_id):
+#     """Return movie reviews by movie_id."""
+
+#     return Review.query.filter(Review.movie_id==movie_id).all()
 
 # set a movie to movieseen
 def create_movie_seen(user_id, movie_id):

@@ -20,6 +20,18 @@ def homepage():
 
     return render_template('homepage.html', movies=movies)
 
+@app.route('/<movie_id>')
+def explore_movie(movie_id):
+    """Display a movie's details."""
+
+    movie = crud.return_movie_by_id(movie_id)
+    director = crud.return_director_by_movie(movie_id)
+    producer = crud.return_producer_by_movie(movie_id)
+    site_rating = crud.return_movie_site_rating(movie_id)
+    # reviews = crud.return_reviews_by_movie_id(movie_id)
+
+    return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating)
+
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', debug=True)

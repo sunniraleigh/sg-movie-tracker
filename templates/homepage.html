@@ -4,8 +4,8 @@
 <h1>Studio Ghibli Movie Tracker</h1>
 {% for movie in movies %}
 <div>
-    <img src="{{ movie.image_url }}">
-    <h2>{{ movie.title }}</h2>
+    <!-- <img src="{{ movie.image_url }}"> -->
+    <h2><a href='/{{ movie.movie_id }}'>{{ movie.title }}</a></h2>
 </div>
 {% endfor %}
 {% endblock %}
