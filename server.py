@@ -32,6 +32,12 @@ def explore_movie(movie_id):
 
     return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating)
 
+@app.route('/login')
+def login_page():
+    """Display login/create account page."""
+
+    return render_template('login_page.html')
+
 @app.route('/create_account', methods=['POST'])
 def create_new_user_account():
     """Create a new user account."""
@@ -41,13 +47,15 @@ def create_new_user_account():
     password = request.form.get('password')
 
     if crud.get_user_by_email(email):
-        flash('')
+        flash('An account with that email already exists. Please login!')
+    else:
+        if crud.get_user_by_username(username):
+            flash('That username is taken. Please choose a different username :)')
+        else:
+            crud.create_user(username, email, password)
+            flash('Account successfully created :D. Please login!')
 
-@app.route('/login')
-def login_page():
-    """Display login/create account page."""
-
-    return render_template('login_page.html')
+    return redirect('/login')
 
 @app.route('/login', methods=['POST'])
 def login_user():
