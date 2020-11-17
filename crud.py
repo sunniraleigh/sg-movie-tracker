@@ -13,6 +13,17 @@ def create_user(username, email, password):
 
     return user
 
+# get user by email or username
+def get_user_by_email_username(username_email):
+    """Return a user by either their username or email."""
+
+    if User.query.filter(User.username==username_email).first():
+        return User.query.filter(User.username==username_email).first()
+    
+    if User.query.filter(User.email==username_email).first():
+        return User.query.filter(User.username==username_email).first()
+    
+
 # create a movie
 def create_movie(title, year_released, overview, duration, api_movie_id, image_url):
     """Create and return a movie."""
