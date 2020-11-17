@@ -40,7 +40,8 @@ def create_new_user_account():
     username = request.form.get('username')
     password = request.form.get('password')
 
-    if 
+    if crud.get_user_by_email(email):
+        flash('')
 
 @app.route('/login')
 def login_page():
@@ -60,13 +61,13 @@ def login_user():
     if user:
         if user.password == password:
             session['current_user'] = user.user_id
-            flash("Logged in!")
+            flash('Logged in!')
             return redirect('/')
         else:
-            flash("Password incorrect. Please try again.")
+            flash('Password incorrect. Please try again.')
             return redirect('/login')
     else:
-        flash("Username or email incorrect. Please try again")
+        flash('Username or email incorrect. Please try again.')
         return redirect('/login')
 
 if __name__ == '__main__':
