@@ -32,6 +32,12 @@ def explore_movie(movie_id):
 
     return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating)
 
+@app.route('/login')
+def login_page():
+    """Display login/create account page."""
+
+    return render_template('login_page.html')
+
 @app.route('/login', methods=['POST'])
 def login_user():
     """Logs a user in."""
@@ -42,16 +48,16 @@ def login_user():
     user = crud.get_user_by_email_username(username_email)
 
     if user:
-        if user.pasword == password:
+        if user.password == password:
             session['current_user'] = user.user_id
             flash("Logged in!")
-            redirect('/')
+            return redirect('/')
         else:
             flash("Password incorrect. Please try again.")
-            redirect('/login')
+            return redirect('/login')
     else:
         flash("Username or email incorrect. Please try again")
-        redirect('/login')
+        return redirect('/login')
 
 if __name__ == '__main__':
     connect_to_db(app)
