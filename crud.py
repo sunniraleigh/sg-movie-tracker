@@ -22,7 +22,18 @@ def get_user_by_email_username(username_email):
     
     if User.query.filter(User.email==username_email).first():
         return User.query.filter(User.username==username_email).first()
-    
+
+# get user by email
+def get_user_by_email(email):
+    """Returns a user by email."""
+
+    return User.query.filter(User.email==email).first()
+
+# get user by username
+def get_user_by_username(username):
+    """Returns a user by username."""
+
+    return User.query.filter(User.username==username).first()
 
 # create a movie
 def create_movie(title, year_released, overview, duration, api_movie_id, image_url):
