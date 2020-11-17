@@ -32,6 +32,16 @@ def explore_movie(movie_id):
 
     return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating)
 
+@app.route('/create_account', methods=['POST'])
+def create_new_user_account():
+    """Create a new user account."""
+    
+    email = request.form.get('email')
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    if 
+
 @app.route('/login')
 def login_page():
     """Display login/create account page."""
