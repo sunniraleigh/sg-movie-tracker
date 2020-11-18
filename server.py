@@ -6,6 +6,7 @@ from model import connect_to_db
 import crud
 from jinja2 import StrictUndefined
 import os
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -30,16 +31,31 @@ def explore_movie(movie_id):
     site_rating = crud.return_movie_site_rating(movie_id)
     # reviews = crud.return_reviews_by_movie_id(movie_id)
 
-    return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating)
+    user_id = session['current_user']
+    rating = crud.get_rating_by_user_movie(user_id, movie_id)
+
+    return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating, rating=rating)
 
 @app.route('/submit_review<movie_id>', methods=['POST'])
 def add_new_review(movie_id):
     """Adds user's new review to the db."""
 
+    timestamp = datetime.now()
     user_id = session['current_user']
-    user = crud.get_user_by_user_id(user_id)
+    review_content = request.form.get('new_review')
 
-    review = request.form.get('new_review')
+    crud.create_review(timestamp, user_id, movie_id, review_content)
+
+    return redirect(f'/{movie_id}')
+
+@app.route('/submit_rating<movie_id>', methods=['POST'])
+def add_rating_for_user(movie_id):
+    """Adds a user's rating to the db."""
+
+    user_id = session['current_user']
+    score = request.args.get('score')
+
+    crud.create_rating(user_id, movie_id, score)
 
     return redirect(f'/{movie_id}')
 

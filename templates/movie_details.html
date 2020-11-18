@@ -4,13 +4,39 @@
 <h1>{{ movie.title }}</h1>
 <img src="{{ movie.image_url }}">
 <p>
-    Year Released: {{ movie.year_released }}
-    Overview: <p>{{ movie.overview }}</p>
-    Director: {% for castcrew in director %} {{ castcrew.name }}{% endfor %}
-    Producer: {% for castcrew in director %} {{ castcrew.name }} {% endfor %}
-    Duration: {{movie.duration}}
-    Site Rating: {{ site_rating }}
+    <p>Year Released: {{ movie.year_released }}</p>
+    <p>Overview:</p>
+    <p>{{ movie.overview }}</p>
+    <p>Director: {% for castcrew in director %} {{ castcrew.name }}{% endfor %}</p>
+    <p>Producer: {% for castcrew in director %} {{ castcrew.name }} {% endfor %}</p>
+    <p>Duration: {{movie.duration}}</p>
+    <p>Site Rating: {{ site_rating }}</p>
 </p>
+
+{% if rating %}
+    Your rating: {{ rating.score }}
+{% else %}
+    <form action="/submit_rating{{ movie.movie_id }}" method="POST">
+
+        <input type="radio" name="score" value="1">
+        <label>1</label>
+
+        <input type="radio" name="score" value="2">
+        <label>2</label>
+
+        <input type="radio" name="score" value="3">
+        <label>3</label>
+
+        <input type="radio" name="score" value="4">
+        <label>4</label>
+
+        <input type="radio" name="score" value="5">
+        <label>5</label>
+
+        <input type="submit">
+        <label>Submit rating</label>
+    </form>
+{% endif %}
 
 <form action="/submit_review{{ movie.movie_id }}" method="POST">
     <p>

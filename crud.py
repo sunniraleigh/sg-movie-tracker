@@ -105,6 +105,11 @@ def return_movie_site_rating(movie_id):
     
     return sum_rating/len(ratings)
 
+def get_rating_by_user_movie(user_id, movie_id):
+    """Return a rating by user_id and movie_id."""
+
+    return Rating.query.filter( (Rating.user_id==user_id) & (Rating.movie_id==movie_id)).all()
+
 # create a review
 def create_review(timestamp, user_id, movie_id, review_content):
     """Create and return a review."""
