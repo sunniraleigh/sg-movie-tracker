@@ -12,7 +12,7 @@
     Site Rating: {{ site_rating }}
 </p>
 
-<form action="/submit_review" method="POST">
+<form action="/submit_review{{ movie.movie_id }}" method="POST">
     <p>
         <input type="text" name="new_review">
     </p>

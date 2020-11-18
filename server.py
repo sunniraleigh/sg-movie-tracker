@@ -32,11 +32,16 @@ def explore_movie(movie_id):
 
     return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating)
 
-# @app.route('/submit_review', methods=['POST'])
-# def add_new_review():
-#     """Adds user's new review to the db."""
+@app.route('/submit_review<movie_id>', methods=['POST'])
+def add_new_review(movie_id):
+    """Adds user's new review to the db."""
 
-#     return redirect()
+    user_id = session['current_user']
+    user = crud.get_user_by_id(user_id)
+
+    review = request.form.get('new_review')
+
+    return redirect(f'/{movie_id}')
 
 @app.route('/login')
 def login_page():
