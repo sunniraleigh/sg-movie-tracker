@@ -32,6 +32,12 @@ def explore_movie(movie_id):
 
     return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating)
 
+# @app.route('/submit_review', methods=['POST'])
+# def add_new_review():
+#     """Adds user's new review to the db."""
+
+#     return redirect()
+
 @app.route('/login')
 def login_page():
     """Display login/create account page."""
