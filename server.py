@@ -37,7 +37,7 @@ def add_new_review(movie_id):
     """Adds user's new review to the db."""
 
     user_id = session['current_user']
-    user = crud.get_user_by_id(user_id)
+    user = crud.get_user_by_user_id(user_id)
 
     review = request.form.get('new_review')
 

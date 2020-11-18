@@ -13,6 +13,12 @@ def create_user(username, email, password):
 
     return user
 
+# get user by user_id
+def get_user_by_user_id(user_id):
+    """Return a user by their user id."""
+
+    return User.query.get(user_id)
+
 # get user by email or username
 def get_user_by_email_username(username_email):
     """Return a user by either their username or email."""
