@@ -78,7 +78,7 @@ def login_user():
         flash('Username or email incorrect. Please try again.')
         return redirect('/login')
 
-@app.route('logout', methods=['POST'])
+@app.route('/logout', methods=['POST'])
 def logout_user():
     """Logs a user out."""
 

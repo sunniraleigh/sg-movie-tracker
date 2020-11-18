@@ -11,6 +11,16 @@
     Duration: {{movie.duration}}
     Site Rating: {{ site_rating }}
 </p>
+
+<form action="/submit_review" method="POST">
+    <p>
+        <input type="text" name="new_review">
+    </p>
+    <p>
+        <input type="submit">
+    </p>
+</form>
+
 {% for review in movie.reviews %}
 <div>
     <p>
