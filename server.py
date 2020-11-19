@@ -38,7 +38,7 @@ def explore_movie(movie_id):
     seen = crud.is_seen(user_id, movie_id)
     watchlist = crud.is_watchlist(user_id, movie_id)
 
-    return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating, rating=rating)
+    return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating, rating=rating, seen=seen, watchlist=watchlist)
 
 @app.route('/submit_review<movie_id>', methods=['POST'])
 def add_new_review(movie_id):

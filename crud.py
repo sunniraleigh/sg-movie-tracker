@@ -138,6 +138,14 @@ def create_movie_seen(user_id, movie_id):
 
     return movie_seen
 
+def is_seen(user_id, movie_id):
+    """Checks to see if a user has seen a movie."""
+
+    if MovieSeen.query.filter( (MovieSeen.user_id==userid) & (MovieSeen.movie_id==movie_id) ).first():
+        return True
+    else:
+        return False
+
 # set a movie to wanttowatch
 def create_want_to_watch(user_id, movie_id):
     """Create and return a movie that a user wants to watch."""
@@ -148,6 +156,14 @@ def create_want_to_watch(user_id, movie_id):
     db.session.commit()
 
     return want_to_watch
+
+def is_watchlist(user_id, movie_id):
+    """Checks to see if a user has seen a movie."""
+
+    if WantToWatch.query.filter( (WantToWatch.user_id==userid) & (WantToWatch.movie_id==movie_id) ).first():
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
     from server import app
