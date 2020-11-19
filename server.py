@@ -64,8 +64,8 @@ def add_rating_for_user(movie_id):
     return redirect(f'/{movie_id}')
 
 @app.route('/submit_seen<movie_id>', methods=['POST'])
-def add_rating_to_seen_for_user(movie_id):
-    """Adds a movie to the seen list for a specific user."""
+def add_movie_to_seen_for_user(movie_id):
+    """Adds a movie to the seen list for the current user."""
 
     user_id = session['current_user']
     
@@ -73,8 +73,18 @@ def add_rating_to_seen_for_user(movie_id):
 
     return redirect(f'/{movie_id}')
 
+@app.route('/remove_from_seen<movie_id>', methods=['POST'])
+def remove_movie_from_seen(movie_id):
+    """Removes a movie from the seen list for the current user."""
+    
+    user_id = session['current_user']
+
+    crud.remove_movie_seen(user_id, movie_id) #TODO: create func in crud file
+
+    return redirect(f'/{movie_id}')
+
 @app.route('/submit_watchlist<movie_id>', methods=['POST'])
-def add_rating_to_watchlist_for_user(movie_id):
+def add_movie_to_watchlist_for_user(movie_id):
     """Adds a movie to the watchlist for a specific user."""
 
     user_id = session['current_user']
