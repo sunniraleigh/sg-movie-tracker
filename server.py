@@ -93,6 +93,16 @@ def add_movie_to_watchlist_for_user(movie_id):
 
     return redirect(f'/{movie_id}')
 
+@app.route('/remove_form_watchlist<movie_id>', methods=['POST'])
+def remove_movie_from_watchlist(movie_id):
+    """Removes a movie from the watchlist for the current user."""
+
+    user_id = session['current_user']
+
+    crud.removie_movie_watchlist(user_id, movie_id) #TODO: create func in crud file
+
+    return redirect(f'/{movie_id}')
+
 @app.route('/login')
 def login_page():
     """Display login/create account page."""
