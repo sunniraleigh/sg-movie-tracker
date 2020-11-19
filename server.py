@@ -34,6 +34,10 @@ def explore_movie(movie_id):
     user_id = session['current_user']
     rating = crud.get_rating_by_user_movie(user_id, movie_id)
 
+    # check if movie is in user seen or watchlist
+    seen = crud.is_seen(user_id, movie_id)
+    watchlist = crud.is_watchlist(user_id, movie_id)
+
     return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating, rating=rating)
 
 @app.route('/submit_review<movie_id>', methods=['POST'])
@@ -56,6 +60,26 @@ def add_rating_for_user(movie_id):
     score = request.form.get('score')
 
     crud.create_rating(user_id, movie_id, score)
+
+    return redirect(f'/{movie_id}')
+
+@app.route('/submit_seen<movie_id>', methods=['POST'])
+def add_rating_to_watchlist_for_user(movie_id):
+    """Adds a movie to the seen list for a specific user."""
+
+    user_id = session['current_user']
+    
+    crud.create_movie_seen(user_id, movie_id)
+
+    return redirect(f'/{movie_id}')
+
+@app.route('/submit_watchlist<movie_id>', methods=['POST'])
+def add_rating_to_watchlist_for_user(movie_id):
+    """Adds a movie to the watchlist for a specific user."""
+
+    user_id = session['current_user']
+    
+    crud.create_want_to_watch(user_id, movie_id)
 
     return redirect(f'/{movie_id}')
 
