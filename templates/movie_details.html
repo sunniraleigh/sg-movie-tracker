@@ -3,7 +3,7 @@
 {% block body %}
 <h1>{{ movie.title }}</h1>
 <img src="{{ movie.image_url }}">
-<p>
+<div>
     <p>Year Released: {{ movie.year_released }}</p>
     <p>Overview:</p>
     <p>{{ movie.overview }}</p>
@@ -11,9 +11,9 @@
     <p>Producer: {% for castcrew in director %} {{ castcrew.name }} {% endfor %}</p>
     <p>Duration: {{movie.duration}}</p>
     <p>Site Rating: {{ site_rating }}</p>
-</p>
+</div>
 
-{% if rating %}
+{% if rating is not none%}
     Your rating: {{ rating.score }}
 {% else %}
     <form action="/submit_rating{{ movie.movie_id }}" method="POST">

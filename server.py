@@ -53,7 +53,7 @@ def add_rating_for_user(movie_id):
     """Adds a user's rating to the db."""
 
     user_id = session['current_user']
-    score = request.args.get('score')
+    score = request.form.get('score')
 
     crud.create_rating(user_id, movie_id, score)
 

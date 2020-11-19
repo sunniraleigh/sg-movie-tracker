@@ -101,14 +101,15 @@ def return_movie_site_rating(movie_id):
     ratings = Rating.query.filter(Rating.movie_id==movie_id).all()
 
     for rating in ratings:
-        sum_rating += rating.score
+        if rating != None:
+            sum_rating += rating.score
     
-    return sum_rating/len(ratings)
+    return sum_rating/len(ratings) if len(ratings)!=0 else sum_rating
 
 def get_rating_by_user_movie(user_id, movie_id):
     """Return a rating by user_id and movie_id."""
 
-    return Rating.query.filter( (Rating.user_id==user_id) & (Rating.movie_id==movie_id)).all()
+    return Rating.query.filter( (Rating.user_id==user_id) & (Rating.movie_id==movie_id)).first()
 
 # create a review
 def create_review(timestamp, user_id, movie_id, review_content):
@@ -121,10 +122,10 @@ def create_review(timestamp, user_id, movie_id, review_content):
 
     return review
 
-# def return_reviews_by_movie_id(movie_id):
-#     """Return movie reviews by movie_id."""
+def return_reviews_by_movie_id(movie_id):
+    """Return movie reviews by movie_id."""
 
-#     return Review.query.filter(Review.movie_id==movie_id).all()
+    return Review.query.filter(Review.movie_id==movie_id).all()
 
 # set a movie to movieseen
 def create_movie_seen(user_id, movie_id):

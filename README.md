@@ -30,11 +30,11 @@ An app where users can keep track of the Studio Ghibli movies they’ve watched,
 - User can explore the movie  
 - User can rate a movie  
 	- User rating impacts site rating  
-- User can write and view reviews  
-- User can search for a movie by title  
+- User can write and view reviews   
 - User can login and log out 
 
 ### 2.0
+- User can search for a movie by title  
 - User can upvote or take away their vote from a review  
 - User can sort and filter movie index
 - User can edit their reviews
