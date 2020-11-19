@@ -14,9 +14,11 @@
 </div>
 
 {% if seen %}
-<p>
-    You have seen this movie!
-</p>
+<div>
+    <form action="/remove_from_seen{{ movie.movie_id }}", method="POST">
+        <button>Remove from Movies Seen</button>
+    </form>
+</div>
 {% else %}
 <div>
     <form action="/submit_seen{{ movie.movie_id }}", method="POST">
@@ -26,9 +28,11 @@
 {% endif %}
 
 {% if watchlist%}
-<p>
-    This movie is on your watchlist!
-</p>
+<div>
+    <form action="/remove_from_watchlist{{ movie.movie_id }}", method="POST">
+        <button>Remove from Watchlist</button>
+    </form>
+</div>
 {% else %}
 <div>
     <form action="/submit_watchlist{{ movie.movie_id }}", method="POST">
