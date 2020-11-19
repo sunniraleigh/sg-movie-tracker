@@ -13,7 +13,28 @@
     <p>Site Rating: {{ site_rating }}</p>
 </div>
 
-{% if %}
+{% if seen %}
+<p>
+    You have seen this movie!
+</p>
+{% else %}
+<div>
+    <form action="/submit_seen{{ movie.movie_id }}", method="POST">
+        <button>Add to Movies Seen</button>
+    </form>
+</div>
+{% endif %}
+
+{% if watchlist%}
+<p>
+    This movie is on your watchlist!
+</p>
+{% else %}
+<div>
+    <form action="/submit_watchlist{{ movie.movie_id }}", method="POST">
+        <button>Add to Watchlist</button>
+    </form>
+</div>
 {% endif %}
 
 {% if rating is not none%}

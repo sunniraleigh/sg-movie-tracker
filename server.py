@@ -64,7 +64,7 @@ def add_rating_for_user(movie_id):
     return redirect(f'/{movie_id}')
 
 @app.route('/submit_seen<movie_id>', methods=['POST'])
-def add_rating_to_watchlist_for_user(movie_id):
+def add_rating_to_seen_for_user(movie_id):
     """Adds a movie to the seen list for a specific user."""
 
     user_id = session['current_user']

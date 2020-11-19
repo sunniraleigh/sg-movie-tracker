@@ -141,7 +141,7 @@ def create_movie_seen(user_id, movie_id):
 def is_seen(user_id, movie_id):
     """Checks to see if a user has seen a movie."""
 
-    if MovieSeen.query.filter( (MovieSeen.user_id==userid) & (MovieSeen.movie_id==movie_id) ).first():
+    if MovieSeen.query.filter( (MovieSeen.user_id==user_id) & (MovieSeen.movie_id==movie_id) ).first():
         return True
     else:
         return False
@@ -160,7 +160,7 @@ def create_want_to_watch(user_id, movie_id):
 def is_watchlist(user_id, movie_id):
     """Checks to see if a user has seen a movie."""
 
-    if WantToWatch.query.filter( (WantToWatch.user_id==userid) & (WantToWatch.movie_id==movie_id) ).first():
+    if WantToWatch.query.filter( (WantToWatch.user_id==user_id) & (WantToWatch.movie_id==movie_id) ).first():
         return True
     else:
         return False
