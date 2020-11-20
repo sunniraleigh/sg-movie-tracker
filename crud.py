@@ -173,13 +173,13 @@ def is_watchlist(user_id, movie_id):
 def remove_movie_watchlist(user_id, movie_id):
     """Removes a movie from a user's watchlist."""
 
-    watchlist = WantToWatch.query.filter(user_id=user_id).all()
+    watchlist = WantToWatch.query.filter(WantToWatch.user_id==user_id).all()
 
     print("THE WATCHLIST BEFORE DELETION!!!*****", watchlist) #before deletion
 
-    watchlist_movie = WantToWatch.query.filter( (WantToWatch.user_id==user_id) & (WantToWatch.movie_id==movie_id) ).first().delete()
+    watchlist_movie = WantToWatch.query.filter( (WantToWatch.user_id==user_id) & (WantToWatch.movie_id==movie_id) ).first()
 
-    # db.session.delete(watchlist_movie)
+    db.session.delete(watchlist_movie)
     db.session.commit()
 
     print("THE WATCHLIST AFTER DELETION!!!*****", watchlist) #after deletion

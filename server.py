@@ -101,7 +101,7 @@ def remove_movie_from_watchlist(movie_id):
 
     print("*****REMOVE MOVEI FROM WATCHLIST WOO*****")
 
-    # crud.remove_movie_watchlist(user_id, movie_id) #TODO: create func in crud file
+    crud.remove_movie_watchlist(user_id, movie_id) #TODO: create func in crud file
 
     return redirect(f'/{movie_id}')
 
