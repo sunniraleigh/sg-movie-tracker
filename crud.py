@@ -149,7 +149,10 @@ def is_seen(user_id, movie_id):
 def remove_movie_seen(user_id, movie_id):
     """Removes a movie from a user's seen list."""
 
-    print("REMOVE A MOVIE FROM SEEN")
+    seen_movie = MovieSeen.query.filter( (MovieSeen.user_id==user_id) & (MovieSeen.movie_id==movie_id) ).first()
+
+    db.session.delete(seen_movie)
+    db.session.commit()
 
 # set a movie to wanttowatch
 def create_want_to_watch(user_id, movie_id):
@@ -173,16 +176,15 @@ def is_watchlist(user_id, movie_id):
 def remove_movie_watchlist(user_id, movie_id):
     """Removes a movie from a user's watchlist."""
 
-    watchlist = WantToWatch.query.filter(WantToWatch.user_id==user_id).all()
-
-    print("THE WATCHLIST BEFORE DELETION!!!*****", watchlist) #before deletion
+    # watchlist = WantToWatch.query.filter(WantToWatch.user_id==user_id).all()
+    # print("THE WATCHLIST BEFORE DELETION!!!*****", watchlist) #before deletion
 
     watchlist_movie = WantToWatch.query.filter( (WantToWatch.user_id==user_id) & (WantToWatch.movie_id==movie_id) ).first()
 
     db.session.delete(watchlist_movie)
     db.session.commit()
 
-    print("THE WATCHLIST AFTER DELETION!!!*****", watchlist) #after deletion
+    # print("THE WATCHLIST AFTER DELETION!!!*****", watchlist) #after deletion
 
 if __name__ == '__main__':
     from server import app
