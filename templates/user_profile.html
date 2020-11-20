@@ -1,4 +1,48 @@
 {% extends 'base.html' %}
 {% block title %} Studio Ghibli Movie Tracker {% endblock %}
 {% block body %}
+<h1>{{ user.username }}</h1>
+<di>
+    <h2>User stats</h2>
+    <p>
+        Movies watched: {{ movies_watched_count }}
+    </p>
+    <p>
+        Reviews written: {{ reviews_written_count }}
+    </p>
+    <p>
+        Ratings given: {{ ratings_given_count }}
+    </p>
+</di>
+<div>
+    <h2>List of movies watched</h2>
+    {% for movie in seenlist %}
+    <p>{{ movie.title }}</p>
+    {% endfor %}
+</div>
+<div>
+    <h2>Watchlist</h2>
+    {% for movie in watchlist %}
+    <p>{{ movie.title }}</p>
+    {% endfor %}
+</div>
+<form action="/">
+    <button>Explore more movies</button>
+</form>
+<div>
+    <h2>Reviews</h2>
+    {% if reviews_written_count == 0%}
+    You have not written a review yet!
+    {% else %}
+    {% for review in reviews %}
+    <div>
+        {{ review.users.username }}
+        {{ review.timestamp }}
+        {{ review.review_content }}
+    </div>
+    {% endif %}
+</div>
+<form action="/logout" method="POST">
+    <button>Logout</button>
+</form>
 {% endblock %}
