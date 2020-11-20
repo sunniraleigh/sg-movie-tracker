@@ -111,6 +111,13 @@ def get_rating_by_user_movie(user_id, movie_id):
 
     return Rating.query.filter( (Rating.user_id==user_id) & (Rating.movie_id==movie_id)).first()
 
+def get_ratings_given_count(user_id):
+    """Return count of the number of ratings a user has given by user id."""
+
+    ratings_given = Rating.query.filter(Rating.user_id==user_id).all()
+
+    return len(ratings_given)
+
 # create a review
 def create_review(timestamp, user_id, movie_id, review_content):
     """Create and return a review."""
@@ -126,6 +133,13 @@ def return_reviews_by_movie_id(movie_id):
     """Return movie reviews by movie_id."""
 
     return Review.query.filter(Review.movie_id==movie_id).all()
+
+def get_reviews_written_count(user_id):
+    """Return count of movie reviews written by a user by user id."""
+
+    reviews = Review.query.filter(Review.user_id==user_id).all()
+
+    return len(reviews)
 
 # set a movie to movieseen
 def create_movie_seen(user_id, movie_id):
@@ -153,6 +167,13 @@ def remove_movie_seen(user_id, movie_id):
 
     db.session.delete(seen_movie)
     db.session.commit()
+
+def get_movies_watched_count(user_id):
+    """Return the count of movies the current user has watched."""
+
+    seen_movies = MovieSeen.query.filter(MovieSeen.user_id==user_id).all()
+
+    return len(seen_movies)
 
 # set a movie to wanttowatch
 def create_want_to_watch(user_id, movie_id):

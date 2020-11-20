@@ -47,14 +47,14 @@ def view_current_user_profile():
     user_id = session['current_user']
     user = crud.get_user_by_user_id(user_id)
 
-    movies_watched_count = crud.get_movies_watched_count(user_id)
-    reviews_written_count = crud.get_reviews_written_count(user_id)
-    ratings_given_count = crud.get_ratings_given_count(user_id)
+    movies_watched_count = crud.get_movies_watched_count(user_id) #TODO: make func in crud file
+    reviews_written_count = crud.get_reviews_written_count(user_id) #TODO: make func in crud file
+    ratings_given_count = crud.get_ratings_given_count(user_id) #TODO: make func in crud file
 
-    seenlist = crud.return_seenlist(user_id)
-    watchlist = crud.return_watchlist(user_id)
+    seenlist = crud.return_seenlist(user_id) #TODO: make func in crud file
+    watchlist = crud.return_watchlist(user_id) #TODO: make func in crud file
 
-    reviews = crud.return_reviews_by_user_id(user_id)
+    reviews = crud.return_reviews_by_user_id(user_id) #TODO: make func in crud file
 
     return render_template('user_profile.html', user=user, movies_watched_count=movies_watched_count, reviews_written_count=reviews_written_count,
     ratings_given_count=ratings_given_count, seelist=seenlist, watchlist=watchlist, reviews=reviews)
