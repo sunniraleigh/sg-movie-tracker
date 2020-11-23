@@ -13,6 +13,10 @@ app = Flask(__name__)
 app.secret_key = os.environ['APP_SECRET_KEY']
 app.jinja_env.undefined = StrictUndefined
 
+@app.route('/')
+def root():
+    return render_template('root.html')
+
 # @app.route('/')
 # def homepage():
 #     """Route to homepage. Redirect to login if user is not in session."""
