@@ -16,11 +16,8 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def homepage():
     """Route to homepage. Redirect to login if user is not in session."""
-    if session.get('current_user'):
-        movies = crud.return_movies()
-        return render_template('homepage.html', movies=movies)
-    else:
-        return redirect('/login')
+    movies = crud.return_movies()
+    return render_template('homepage.html', movies=movies)
 
 @app.route('/<movie_id>')
 def explore_movie(movie_id):
@@ -32,12 +29,18 @@ def explore_movie(movie_id):
     site_rating = crud.return_movie_site_rating(movie_id)
     # reviews = crud.return_reviews_by_movie_id(movie_id)
 
-    user_id = session['current_user']
-    rating = crud.get_rating_by_user_movie(user_id, movie_id)
+    user_id = session.get('current_user')
 
-    # check if movie is in user seen or watchlist
-    seen = crud.is_seen(user_id, movie_id)
-    watchlist = crud.is_watchlist(user_id, movie_id)
+    if user_id:
+        rating = crud.get_rating_by_user_movie(user_id, movie_id)
+
+        # check if movie is in user seen or watchlist
+        seen = crud.is_seen(user_id, movie_id)
+        watchlist = crud.is_watchlist(user_id, movie_id)
+    else:
+        rating = None
+        seen = None
+        watchlist = None
 
     return render_template('movie_details.html', movie=movie, director=director, producer=producer, site_rating=site_rating, rating=rating, seen=seen, watchlist=watchlist)
 
