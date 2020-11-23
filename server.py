@@ -57,7 +57,7 @@ def view_current_user_profile():
     reviews = crud.return_reviews_by_user_id(user_id) #TODO: make func in crud file
 
     return render_template('user_profile.html', user=user, movies_watched_count=movies_watched_count, reviews_written_count=reviews_written_count,
-    ratings_given_count=ratings_given_count, seelist=seenlist, watchlist=watchlist, reviews=reviews)
+    ratings_given_count=ratings_given_count, seenlist=seenlist, watchlist=watchlist, reviews=reviews)
 
 
 @app.route('/submit_review<movie_id>', methods=['POST'])

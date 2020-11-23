@@ -134,6 +134,11 @@ def return_reviews_by_movie_id(movie_id):
 
     return Review.query.filter(Review.movie_id==movie_id).all()
 
+def return_reviews_by_user_id(user_id):
+    """Return movie reviews by user id."""
+
+    return Review.query.filter(Review.user_id==user_id).all()
+
 def get_reviews_written_count(user_id):
     """Return count of movie reviews written by a user by user id."""
 
@@ -167,6 +172,11 @@ def remove_movie_seen(user_id, movie_id):
 
     db.session.delete(seen_movie)
     db.session.commit()
+
+def return_seenlist(user_id):
+    """Return a user's seenlist."""
+
+    return MovieSeen.query.filter(MovieSeen.user_id==user_id).all()
 
 def get_movies_watched_count(user_id):
     """Return the count of movies the current user has watched."""
@@ -206,6 +216,11 @@ def remove_movie_watchlist(user_id, movie_id):
     db.session.commit()
 
     # print("THE WATCHLIST AFTER DELETION!!!*****", watchlist) #after deletion
+
+def return_watchlist(user_id):
+    """Return a user's watchlist."""
+
+    return WantToWatch.query.filter(WantToWatch.user_id==user_id).all()
 
 if __name__ == '__main__':
     from server import app

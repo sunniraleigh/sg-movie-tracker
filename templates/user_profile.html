@@ -17,13 +17,13 @@
 <div>
     <h2>List of movies watched</h2>
     {% for movie in seenlist %}
-    <p>{{ movie.title }}</p>
+    <p>{{ movie.movies.title }}</p>
     {% endfor %}
 </div>
 <div>
     <h2>Watchlist</h2>
     {% for movie in watchlist %}
-    <p>{{ movie.title }}</p>
+    <p>{{ movie.movies.title }}</p>
     {% endfor %}
 </div>
 <form action="/">
@@ -40,6 +40,7 @@
         {{ review.timestamp }}
         {{ review.review_content }}
     </div>
+    {% endfor %}
     {% endif %}
 </div>
 <form action="/logout" method="POST">
