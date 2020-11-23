@@ -1,4 +1,5 @@
 // rename React funcs we want to use
+const Router = ReactRouterDOM.BrowserRouter;
 const { useHistory, useParams, Redirect, Switch, Prompt, Link, Route } = ReactRouterDOM;
 
 function Homepage() {
@@ -28,21 +29,19 @@ function MovieDetails() {
 function App() {
     return (
         <Router>
-            <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/movie_details">Movie Details</Link>
-                        </li>
-                        <li>
-                            <Link to="/user_profile">Profile Page</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/movie_details">Movie Details</Link>
+                    </li>
+                    <li>
+                        <Link to="/user_profile">Profile Page</Link>                        
+                    </li>
+                </ul>
+            </nav>
             <div>
                 <Switch>
 
@@ -63,3 +62,5 @@ function App() {
         </Router>
     );
 }
+
+ReactDOM.render(<App />, document.getElementById("root"))
