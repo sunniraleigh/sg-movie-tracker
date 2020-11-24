@@ -10,6 +10,14 @@ function Homepage() {
     );
 }
 
+function LogIn() {
+    return (
+        <div>
+            This is the log in page where users can create an account and login!
+        </div>
+    );
+}
+
 function UserProfile() {
     return (
         <div>
