@@ -19,14 +19,30 @@ function LogInPage() {
 }
 
 function LogIn() {
+
+    const [useremailname, setUserEmailName] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    function handleLogIn(evt) {
+        evt.preventDefault();
+    }
+
+    function handleUserEmailNameChange(evt) {
+        setUserEmailName(evt.target.value);
+    }
+
+    function handlePasswordChange(evt) {
+        setPassword(evt.target.value);
+    }
+
     return (
         // form for logging in
         <div>
-            <form>
-                Username:
-                <input type="text"></input>
+            <form onSubmit={handleLogIn}>
+                Username or email:
+                <input value={useremailname} onChange={handleUserEmailNameChange} type="text"></input>
                 Password:
-                <input type="text"></input>
+                <input value={password} onChange={handlePasswordChange} type="text"></input>
                 <button>Login</button>
             </form>
         </div>
