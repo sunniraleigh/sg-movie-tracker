@@ -48,6 +48,9 @@ function App() {
                     <li>
                         <Link to="/user_profile">Profile Page</Link>                        
                     </li>
+                    <li>
+                        <Link to="/login_page">Create an Account or Login</Link>                        
+                    </li>
                 </ul>
             </nav>
             <div>
@@ -58,6 +61,9 @@ function App() {
                     </Route>
                     <Route path="/user_profile">
                         <UserProfile />
+                    </Route>
+                    <Route path="/login_page">
+                        <LogIn />
                     </Route>
 
                     {/* Home route */}
