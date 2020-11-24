@@ -10,11 +10,32 @@ function Homepage() {
     );
 }
 
-function LogIn() {
+function LogInPage() {
     return (
         <div>
             This is the log in page where users can create an account and login!
         </div>
+    );
+}
+
+function LogIn() {
+    return (
+        // form for logging in
+        <div>
+            <form>
+                Username:
+                <input type="text"></input>
+                Password:
+                <input type="text"></input>
+                <button>Login</button>
+            </form>
+        </div>
+    );
+}
+
+function CreateAnAccount() {
+    return (
+        // for creating an account
     );
 }
 
@@ -63,7 +84,7 @@ function App() {
                         <UserProfile />
                     </Route>
                     <Route path="/login_page">
-                        <LogIn />
+                        <LogInPage />
                     </Route>
 
                     {/* Home route */}
