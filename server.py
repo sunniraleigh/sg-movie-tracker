@@ -19,6 +19,37 @@ def root():
     
     return render_template('root.html')
 
+@app.route('/api/login', methods=['POST'])
+def login():
+    """Logs a user in."""
+
+    data = request.get_json()
+    username_email = data['usernameemail']
+    password = data['password']
+
+    # print(data, username_email, password)
+
+    user = crud.get_user_by_email_username(username_email)
+    print(user)
+
+    return 'hi'
+
+    # if user:
+    #     if user.password == password:
+    #         session['current_user'] = user.user_id
+    #         # flash('Logged in!')
+    #         print('logged in')
+    #         return redirect('/')
+    #         # return 'hi'
+    #     else:
+    #         # flash('Password incorrect. Please try again.')
+    #         # return redirect('/login')
+    #         return 'hi'
+    # else:
+    #     # flash('Username or email incorrect. Please try again.')
+    #     # return redirect('/login')
+    #     return 'hi'
+
 # @app.route('/')
 # def homepage():
 #     """Route to homepage. Redirect to login if user is not in session."""

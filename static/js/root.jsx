@@ -14,21 +14,33 @@ function LogInPage() {
     return (
         <div>
             This is the log in page where users can create an account and login!
+            <LogIn />
         </div>
     );
 }
 
 function LogIn() {
 
-    const [useremailname, setUserEmailName] = React.useState('');
+    const [usernameemail, setUserNameEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
     function handleLogIn(evt) {
         evt.preventDefault();
+        const data = {
+            usernameemail: usernameemail,
+            password: password
+        };
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        };
+        fetch('/api/login', options);
+        console.log('logged in maybe ***!!!! WOOW');
     }
 
-    function handleUserEmailNameChange(evt) {
-        setUserEmailName(evt.target.value);
+    function handleUserNameEmailChange(evt) {
+        setUserNameEmail(evt.target.value);
     }
 
     function handlePasswordChange(evt) {
@@ -40,7 +52,7 @@ function LogIn() {
         <div>
             <form onSubmit={handleLogIn}>
                 Username or email:
-                <input value={useremailname} onChange={handleUserEmailNameChange} type="text"></input>
+                <input value={usernameemail} onChange={handleUserNameEmailChange} type="text"></input>
                 Password:
                 <input value={password} onChange={handlePasswordChange} type="text"></input>
                 <button>Login</button>
@@ -49,11 +61,11 @@ function LogIn() {
     );
 }
 
-function CreateAnAccount() {
-    return (
-        // for creating an account
-    );
-}
+// function CreateAnAccount() {
+//     return (
+//         // for creating an account
+//     );
+// }
 
 function UserProfile() {
     return (
