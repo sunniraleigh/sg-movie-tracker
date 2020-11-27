@@ -69,6 +69,7 @@ function CreateAnAccount() {
     const [email, setEmail] = React.useState('');
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
+    let check_email = false
 
     function handleNewAccount() {
         evt.preventDefault();
@@ -104,7 +105,7 @@ function CreateAnAccount() {
         };
         fetch('/api/check_email', options)
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => check_email = data)
         // is email is being used, set a var to True to help determine display below
     }
 
@@ -120,21 +121,52 @@ function CreateAnAccount() {
         // console.log(evt.target.value)
     }
 
-
-    return (
-        // for creating an account
-        <div>
-            <form onSubmit={handleNewAccount}>
-                Email:
-                <input value={email} onChange={handleEmailChange} type="text"></input>
-                Username:
-                <input value={username} onChange={handleUsernameChange} type="text"></input>
-                Password:
-                <input value={password} onChange={handlePasswordChange} type="text"></input>
-                <button>Create a New Account</button>
-            </form>
-        </div>
-    );
+    if (check_email == true) {
+        return (
+            // for creating an account
+            <div>
+                <form onSubmit={handleNewAccount}>
+                    Email:
+                    <input value={email} onChange={handleEmailChange} type="text"></input>
+                    This email is already in use. Login or use a different email.
+                    Username:
+                    <input value={username} onChange={handleUsernameChange} type="text"></input>
+                    Password:
+                    <input value={password} onChange={handlePasswordChange} type="text"></input>
+                    <button>Create a New Account</button>
+                </form>
+            </div>
+        );
+    } else {
+        return (
+            // for creating an account
+            <div>
+                <form onSubmit={handleNewAccount}>
+                    Email:
+                    <input value={email} onChange={handleEmailChange} type="text"></input>
+                    Username:
+                    <input value={username} onChange={handleUsernameChange} type="text"></input>
+                    Password:
+                    <input value={password} onChange={handlePasswordChange} type="text"></input>
+                    <button>Create a New Account</button>
+                </form>
+            </div>
+        );
+    }
+    // return (
+    //     // for creating an account
+    //     <div>
+    //         <form onSubmit={handleNewAccount}>
+    //             Email:
+    //             <input value={email} onChange={handleEmailChange} type="text"></input>
+    //             Username:
+    //             <input value={username} onChange={handleUsernameChange} type="text"></input>
+    //             Password:
+    //             <input value={password} onChange={handlePasswordChange} type="text"></input>
+    //             <button>Create a New Account</button>
+    //         </form>
+    //     </div>
+    // );
 }
 
 function UserProfile() {

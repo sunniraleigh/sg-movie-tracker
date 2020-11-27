@@ -82,9 +82,11 @@ def check_email():
     """Checks to see if the given email is already in the db."""
     data = request.get_json()
     email = data['email']
-    print(email)
 
-    return jsonify(email)
+    if crud.get_user_by_email(email):
+        return jsonify(True)
+    else:
+        return jsonify(False)
 
 
 # @app.route('/')
