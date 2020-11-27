@@ -1,7 +1,7 @@
 """Server for Studio Ghibli Movie Tracker app."""
 
 from flask import (Flask, render_template, request, flash, 
-                    session, redirect)
+                    session, redirect, jsonify)
 from model import connect_to_db
 import crud
 from jinja2 import StrictUndefined
@@ -77,6 +77,14 @@ def create_account():
 
 #     return redirect('/login')
 
+@app.route('/api/check_email', methods=['POST'])
+def check_email():
+    """Checks to see if the given email is already in the db."""
+    data = request.get_json()
+    email = data['email']
+    print(email)
+
+    return jsonify(email)
 
 
 # @app.route('/')

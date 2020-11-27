@@ -93,11 +93,15 @@ function CreateAnAccount() {
         setEmail(evt.target.value)
         // console.log(evt.target.value)
         // fetch data from backend to determine if email is already used
+        const data = {
+            email: email
+        };
+
         const options = {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {'Content-Type': 'application/json'}
-        }
+        };
         fetch('/api/check_email', options)
         .then(response => response.json())
         .then(data => console.log(data))
