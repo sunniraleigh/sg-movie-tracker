@@ -66,38 +66,56 @@ function LogIn() {
 
 function CreateAnAccount() {
 
-    const [email, setEmail] = React.useState['']
-    const [username, setUsername] = React.useState['']
-    const [password, setPassword] = React.useState['']
+    const [email, setEmail] = React.useState('');
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
     function handleNewAccount() {
         evt.preventDefault();
+        alert('submitted form')
+
         const data = {
             email: email,
             username: username,
             password: password
         };
+
         const options = {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {'Content-Type': 'application/json'}
         };
+
         fetch('/api/create_account', options);
     }
 
     function handleEmailChange(evt) {
-        // retrieve data from backend so if the email is already taken, notify user
         setEmail(evt.target.value)
+        // console.log(evt.target.value)
+        // fetch data from backend to determine if email is already used
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        }
+        fetch('/api/check_email', options)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        // is email is being used, set a var to True to help determine display below
     }
 
     function handleUsernameChange(evt) {
-        // retrive data from the backend so if username is taken, notify user
         setUsername(evt.target.value)
+        // console.log(evt.target.value)
+        // fetch data from backend to determine if username is already taken
+        // if username is take, set a var to True which can help determine display below
     }
 
     function handlePasswordChange(evt) {
         setPassword(evt.target.value)
+        // console.log(evt.target.value)
     }
+
 
     return (
         // for creating an account
