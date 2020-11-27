@@ -14,7 +14,10 @@ function LogInPage() {
     return (
         <div>
             This is the log in page where users can create an account and login!
+            <p>Login here:</p>
             <LogIn />
+            <p>Creaate a new account here:</p>
+            <CreateAnAccount />
         </div>
     );
 }
@@ -36,7 +39,7 @@ function LogIn() {
             headers: {'Content-Type': 'application/json'}
         };
         fetch('/api/login', options);
-        console.log('logged in maybe ***!!!! WOOW');
+        // console.log('logged in maybe ***!!!! WOOW');
     }
 
     function handleUserNameEmailChange(evt) {
@@ -61,11 +64,56 @@ function LogIn() {
     );
 }
 
-// function CreateAnAccount() {
-//     return (
-//         // for creating an account
-//     );
-// }
+function CreateAnAccount() {
+
+    const [email, setEmail] = React.useState['']
+    const [username, setUsername] = React.useState['']
+    const [password, setPassword] = React.useState['']
+
+    function handleNewAccount() {
+        evt.preventDefault();
+        const data = {
+            email: email,
+            username: username,
+            password: password
+        };
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        };
+        fetch('/api/create_account', options);
+    }
+
+    function handleEmailChange(evt) {
+        // retrieve data from backend so if the email is already taken, notify user
+        setEmail(evt.target.value)
+    }
+
+    function handleUsernameChange(evt) {
+        // retrive data from the backend so if username is taken, notify user
+        setUsername(evt.target.value)
+    }
+
+    function handlePasswordChange(evt) {
+        setPassword(evt.target.value)
+    }
+
+    return (
+        // for creating an account
+        <div>
+            <form onSubmit={handleNewAccount}>
+                Email:
+                <input value={email} onChange={handleEmailChange} type="text"></input>
+                Username:
+                <input value={username} onChange={handleUsernameChange} type="text"></input>
+                Password:
+                <input value={password} onChange={handlePasswordChange} type="text"></input>
+                <button>Create a New Account</button>
+            </form>
+        </div>
+    );
+}
 
 function UserProfile() {
     return (

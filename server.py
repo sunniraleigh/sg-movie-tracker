@@ -50,6 +50,35 @@ def login():
     #     # return redirect('/login')
     #     return 'hi'
 
+@app.route('/api/create_account', methods=['POST'])
+def create_account():
+    """Creates a new user account."""
+
+    data = request.get_json()
+
+    email = data['email']
+    username = data['username']
+    password = data['password']
+
+    # user = crud.create_user(username, email, password)
+
+    print(email, username, password, user)
+
+    return 'hello'
+
+#     if crud.get_user_by_email(email):
+#         flash('An account with that email already exists. Please login!')
+#     else:
+#         if crud.get_user_by_username(username):
+#             flash('That username is taken. Please choose a different username :)')
+#         else:
+#             crud.create_user(username, email, password)
+#             flash('Account successfully created :D. Please login!')
+
+#     return redirect('/login')
+
+
+
 # @app.route('/')
 # def homepage():
 #     """Route to homepage. Redirect to login if user is not in session."""
