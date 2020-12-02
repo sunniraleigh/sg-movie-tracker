@@ -1,28 +1,57 @@
 <!doctype html>
 <html>
     <head>
-        <title>
-            {% block title %}{% endblock %}
-        </title>
-        {% block head %}{% endblock %}
-
         <!-- meta tags from getbootstrap.com -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
+        <!-- title of the website -->
+        <title>
+            Studio Ghibli Movie Tracker
+        </title>
         <!-- Bootstrap CSS from getbootstrap.com -->
         <link rel="stylesheet" 
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
         crossorigin="anonymous">
-
-        <!-- css styling -->
+        <!-- latest version of jQuery -->
+        <!-- Popper.js -->
+        <!-- Bootstrap.js -->
+        <!-- Font Awesome -->
+        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+        <!-- personal css styling -->
         <link rel="stylesheet" href="static/css/styles.css">
+
+        <!-- {% block head %}{% endblock %} -->
 
     </head>
     <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+            <div class="container fluid">
+                <a class="navbar-brand" href="#"><img src="static/img/logo.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggle-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Home -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Home</a>
+                        </li>
+                        <!-- Login -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Login</a>
+                        </li>
+                        <!-- User profile -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Profile</a>
+                        </li>
+                    </ul>
+                </div>
 
-        <nav>
+            </div>
+        </nav>
+
+        <!-- <nav>
             <h2><a href='/'>Home</a></h2>
             <p><a href='/user_profile'>Profile</a></p>
             <p><a href='/login'>Signup/Login</a></p>
@@ -31,7 +60,7 @@
         <p class='flash-msg'>{{ msg }}</p>
         {% endfor %}
         
-        {% block body %}{% endblock %}
+        {% block body %}{% endblock %} -->
 
         <!-- SCRIPT TAGS BELOW -->
         <!-- jQuery script tag from code.jquery.com -->
@@ -40,9 +69,6 @@
         crossorigin="anonymous"></script>
 
         <!-- jQuery script tags from getbootsrap.com -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
-        crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
         crossorigin="anonymous"></script>
