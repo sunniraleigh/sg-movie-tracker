@@ -21,7 +21,7 @@
         <!-- personal css styling -->
         <link rel="stylesheet" href="static/css/styles.css">
 
-        <!-- {% block head %}{% endblock %} -->
+        {% block head %}{% endblock %}
 
     </head>
     <body>
@@ -35,15 +35,15 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Home -->
                         <li class="nav-item">
-                            <a class="nav-link" href="">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <!-- Login -->
                         <li class="nav-item">
-                            <a class="nav-link" href="">Login</a>
+                            <a class="nav-link" href="/login">Login</a>
                         </li>
                         <!-- User profile -->
                         <li class="nav-item">
-                            <a class="nav-link" href="">Profile</a>
+                            <a class="nav-link" href="/user_profile">Profile</a>
                         </li>
                     </ul>
                 </div>
@@ -51,16 +51,11 @@
             </div>
         </nav>
 
-        <!-- <nav>
-            <h2><a href='/'>Home</a></h2>
-            <p><a href='/user_profile'>Profile</a></p>
-            <p><a href='/login'>Signup/Login</a></p>
-        </nav>
         {% for msg in get_flashed_messages() %}
         <p class='flash-msg'>{{ msg }}</p>
         {% endfor %}
         
-        {% block body %}{% endblock %} -->
+        {% block body %}{% endblock %}
 
         <!-- SCRIPT TAGS BELOW -->
         <!-- jQuery script tag from code.jquery.com -->
