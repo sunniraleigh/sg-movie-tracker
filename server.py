@@ -17,15 +17,22 @@ app.jinja_env.undefined = StrictUndefined
 def homepage():
     """Route to homepage. Redirect to login if user is not in session."""
     # movies = crud.return_movies()
-    return render_template('homepage.html')
+    if session.get('current_user'):
+        return render_template('homepage.html')
+    else:
+        return redirect('/login')
 
 @app.route('/api/movies_data.json')
 def retrieve_movie_data():
     """Get movie information."""
-    movies = crud.return_movies()
-    seenlist = crud.return_seenlist()
-    watchlist = crud.return_watchlist()
+
+    print('****MADE A CONNECTION***')
+
     user = session['current_user']
+
+    movies = crud.return_movies()
+    seenlist = crud.return_seenlist(user)
+    watchlist = crud.return_watchlist(user)
 
     seenlist_ids = [seen.movie_id for seen in seenlist]
     watchlist_ids = [watch.movie_id for watch in watchlist]
@@ -38,8 +45,8 @@ def retrieve_movie_data():
         movie_info['movie_id'] = movie.movie_id
         movie_info['title'] = movie.title
         movie_info['img_url'] = movie.image_url
-        movie_info['seenlist_status'] = movie_id in seenlist_ids
-        movie_info['watchlist_status'] = movie_id in watchlist_ids
+        movie_info['seenlist_status'] = movie.movie_id in seenlist_ids
+        movie_info['watchlist_status'] = movie.movie_id in watchlist_ids
 
         movies_data[movie.movie_id] = movie_info
     
