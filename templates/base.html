@@ -14,6 +14,10 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
         crossorigin="anonymous">
         <!-- latest version of jQuery -->
+        <!-- jQuery script tag from code.jquery.com -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js" 
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+        crossorigin="anonymous"></script>
         <!-- Popper.js -->
         <!-- Bootstrap.js -->
         <!-- Font Awesome -->
@@ -58,17 +62,21 @@
         {% block body %}{% endblock %}
 
         <!-- SCRIPT TAGS BELOW -->
-        <!-- jQuery script tag from code.jquery.com -->
-        <script src="https://code.jquery.com/jquery-3.5.1.js" 
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
-        crossorigin="anonymous"></script>
 
-        <!-- jQuery script tags from getbootsrap.com -->
+        <!-- popper.js bootstrap.js tags from getbootsrap.com -->
+        <!-- popper.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
         crossorigin="anonymous"></script>
+        <!-- bootstrap.js -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
         crossorigin="anonymous"></script>
+
+        <!-- JS scripts -->
+        <script src="static/js/seenlist-status.js"></script>
+        <script src="static/js/watchlist-status.js"></script>
+        <script src="static/js/create-review.js"></script>
+        <script src="static/js/rating-change.js"></script>
     </body>
 </html>
