@@ -22,36 +22,6 @@ def homepage():
     else:
         return redirect('/login')
 
-@app.route('/api/movies_data.json')
-def retrieve_movie_data():
-    """Get movie information."""
-
-    print('****MADE A CONNECTION***')
-
-    user = session['current_user']
-
-    movies = crud.return_movies()
-    seenlist = crud.return_seenlist(user)
-    watchlist = crud.return_watchlist(user)
-
-    seenlist_ids = [seen.movie_id for seen in seenlist]
-    watchlist_ids = [watch.movie_id for watch in watchlist]
-
-    movies_data = {}
-
-    for movie in movies:
-        movie_info = {}
-
-        movie_info['movie_id'] = movie.movie_id
-        movie_info['title'] = movie.title
-        movie_info['img_url'] = movie.image_url
-        movie_info['seenlist_status'] = movie.movie_id in seenlist_ids
-        movie_info['watchlist_status'] = movie.movie_id in watchlist_ids
-
-        movies_data[movie.movie_id] = movie_info
-    
-    return jsonify(movies_data)
-
 @app.route('/<movie_id>')
 def explore_movie(movie_id):
     """Display a movie's details."""
