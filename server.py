@@ -155,21 +155,12 @@ def remove_movie_from_watchlist(movie_id):
     """Removes a movie from the watchlist for the current user."""
 
     user_id = session['current_user']
-    movie_id = request.args.get('movie_id')
 
-    dictionary = {
-        "user_id": user_id,
-        "movie_id": movie_id
-    }
-    
-    print(movie_id)
+    print("*****REMOVE MOVEI FROM WATCHLIST WOO*****")
 
-    # print("*****REMOVE MOVEI FROM WATCHLIST WOO*****")
+    crud.remove_movie_watchlist(user_id, movie_id)
 
-    # crud.remove_movie_watchlist(user_id, movie_id)
-
-    # return redirect(f'/{movie_id}')
-    return jsonify(dictionary)
+    return redirect(f'/{movie_id}')
 
 @app.route('/login')
 def login_page():
