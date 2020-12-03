@@ -1,7 +1,7 @@
 """Server for Studio Ghibli Movie Tracker app."""
 
 from flask import (Flask, render_template, request, flash, 
-                    session, redirect)
+                    session, redirect, jsonify)
 from model import connect_to_db
 import crud
 from jinja2 import StrictUndefined
@@ -16,8 +16,8 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def homepage():
     """Route to homepage. Redirect to login if user is not in session."""
-    movies = crud.return_movies()
-    return render_template('homepage.html', movies=movies)
+    # movies = crud.return_movies()
+    return render_template('homepage.html')
 
 @app.route('/api/movies_data.json')
 def retrieve_movie_data():
@@ -40,6 +40,10 @@ def retrieve_movie_data():
         movie_info['img_url'] = movie.image_url
         movie_info['seenlist_status'] = movie_id in seenlist_ids
         movie_info['watchlist_status'] = movie_id in watchlist_ids
+
+        movies_data[movie.movie_id] = movie_info
+    
+    return jsonify(movies_data)
 
 @app.route('/<movie_id>')
 def explore_movie(movie_id):
