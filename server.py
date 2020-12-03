@@ -19,6 +19,28 @@ def homepage():
     movies = crud.return_movies()
     return render_template('homepage.html', movies=movies)
 
+@app.route('/api/movies_data.json')
+def retrieve_movie_data():
+    """Get movie information."""
+    movies = crud.return_movies()
+    seenlist = crud.return_seenlist()
+    watchlist = crud.return_watchlist()
+    user = session['current_user']
+
+    seenlist_ids = [seen.movie_id for seen in seenlist]
+    watchlist_ids = [watch.movie_id for watch in watchlist]
+
+    movies_data = {}
+
+    for movie in movies:
+        movie_info = {}
+
+        movie_info['movie_id'] = movie.movie_id
+        movie_info['title'] = movie.title
+        movie_info['img_url'] = movie.image_url
+        movie_info['seenlist_status'] = movie_id in seenlist_ids
+        movie_info['watchlist_status'] = movie_id in watchlist_ids
+
 @app.route('/<movie_id>')
 def explore_movie(movie_id):
     """Display a movie's details."""
