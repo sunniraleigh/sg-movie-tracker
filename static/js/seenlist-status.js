@@ -1,28 +1,40 @@
 // event handling and DOM manipulation for seenlist button
 
-const button = $('#seenlist')
+// send post request to server to retrieve seen status for the user
+// if on user's seenlist
 
-// $('#seenlist').on('click', () => {
-//     // console.log('button clicked')
+// $.post("/api/seenliststatus.json", (res) => {
+//     const seenListStatus = response
+// })
 
+// if movie_id of button matches 
+
+const button = $('.seenlist');
+
+// const textPlease = 'dogs'
+
+// button.each(() => {
+//     button.html("Add to seenlist")
 // });
+    
+button.html("Add to seenlist");
 
 button.click(() => {
-    console.log('seen status changed')
+    console.log("seen status changed")
 
     // console.log(button.attr(name))
 
-    const movieId = {
-        movie_id: 1
-    }
+    // const movieId = {
+    //     movie_id: 1
+    // }
 
     // manipulate DOM
     if (button.html() === "Add to seenlist"){
         button.html("Remove from seenlist")
 
-        $.post('/remove_from_watchlist', movieId, (res) => {
-            alert(res.movie_id)
-        })
+        // $.post('/remove_from_watchlist', movieId, (res) => {
+        //     alert(res.movie_id)
+        // })
     
     } else {
         button.html("Add to seenlist")
@@ -32,4 +44,4 @@ button.click(() => {
 
     // define data to send to server
     // send post request with ajax?
-})
+});
