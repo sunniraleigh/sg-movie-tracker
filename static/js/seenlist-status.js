@@ -9,7 +9,16 @@
 
 // if movie_id of button matches 
 
-const button = $('.seenlist');
+const button = document.querySelectorAll("#seenlist");
+button.innerHTML() = "Add to seenlist"
+
+button.addEventListener('click', () => {
+    if (button.innerHTML() === "Add to seenlist"){
+        button.innerHTML() = "Remove from seenlist"
+    }else{
+        button.innerHTML
+    }
+})
 
 // const textPlease = 'dogs'
 
