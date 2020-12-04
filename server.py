@@ -16,9 +16,9 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def homepage():
     """Route to homepage. Redirect to login if user is not in session."""
-    # movies = crud.return_movies()
+    movies = crud.return_movies()
     if session.get('current_user'):
-        return render_template('homepage.html')
+        return render_template('homepage.html', movies=movies)
     else:
         return redirect('/login')
 

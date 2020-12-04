@@ -5,14 +5,6 @@
 <div id="movie-card">
     <!-- <img src="{{ movie.image_url }}"> -->
     <h2><a href='/{{ movie.movie_id }}'>{{ movie.title }}</a></h2>
-    <!-- seenlist -->
-    <button id="seenlist" name="{{ movie.movie_id }}">
-        Add to seenlist
-    </button>
-    <!-- watchlist -->
-    <button id="watchlist" name="{{ movie.movie_id }}">
-        Add to watchlist
-    </button>
 </div>
 {% endfor %}
 {% endblock %}
