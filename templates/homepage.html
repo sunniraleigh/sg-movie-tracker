@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block title %} Studio Ghibli Movie Tracker {% endblock %}
 {% block body %}
+<div class="container-fluid">
 {% for movie in movies %}
-<div id="movie-card">
-    <!-- <img src="{{ movie.image_url }}"> -->
+<div class="movie-card">
+    <img src="{{ movie.image_url }}">
     <h2><a href='/{{ movie.movie_id }}'>{{ movie.title }}</a></h2>
 </div>
 {% endfor %}
+</div>
 {% endblock %}
