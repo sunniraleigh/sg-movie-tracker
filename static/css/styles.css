@@ -13,7 +13,7 @@
 } */
 
 .movie-title {
-    font-family: Helvetica Neue;
+    font-family: "Helvetica Neue";
     text-transform: uppercase;
     color: #222831;
 }

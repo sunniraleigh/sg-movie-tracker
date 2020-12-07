@@ -2,30 +2,31 @@
 {% block title %} Studio Ghibli Movie Tracker {% endblock %}
 {% block body %}
 <div class="container text-center">
-    <div class="row">
+    <div class="row justify-content-center">
         <!-- Create an account form -->
-        </div class="col">
-            <h2>Sign Up!</h2>
-            <form id="create-account-form" action="/create_account" method="POST">
-                <div class="form-group">
-                    <label for="create-account-email" class="sr-only">Email address</label>
-                    <input type="email" id="create-account-email" class="form-control" placeholder="Email address" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="create-account-username" class="sr-only">Username</label>
-                    <input type="username" id="create-account-username" class="form-control" placeholder="Username" name="username">
-                </div>
-                <div class="form-group">
-                    <label for="create-account-password" class="sr-only">Password</label>
-                    <input type="password" id="create-account-password" class="form-control" placeholder="Password" name="password">
-                </div>
-                <button type="submit" class="btn btn-primary">Create Account</button>
-            </form>
-        </div>
+        <div class="col-6">
+            <!-- <div class="card"> -->
+                <h2>Sign Up!</h2>
+                <form id="create-account-form" action="/create_account" method="POST">
+                    <div class="form-group">
+                        <label for="create-account-email" class="sr-only">Email address</label>
+                        <input type="email" id="create-account-email" class="form-control" placeholder="Email address" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="create-account-username" class="sr-only">Username</label>
+                        <input type="username" id="create-account-username" class="form-control" placeholder="Username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="create-account-password" class="sr-only">Password</label>
+                        <input type="password" id="create-account-password" class="form-control" placeholder="Password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+            <!-- </div> -->
         <!-- Login form -->
-        </div class="col">
-            <h2>Login</h2>
-            <form id="login-form" action="/login" method="POST">
+            <!-- <div class="card"> -->
+                <h2>Login</h2>
+                <form id="login-form" action="/login" method="POST">
                 <div class="form-group">
                     <label for="login-username-email" class="sr-only">Email address</label>
                     <input type="text" id="login-username-email" class="form-control" placeholder="Email address or Username" name="username_email">
@@ -35,7 +36,8 @@
                     <input type="password" id="login-password" class="form-control" placeholder="Password" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
-            </form>
+                </form>
+            <!-- </div> -->
         </div>
     </div>
 </div>
