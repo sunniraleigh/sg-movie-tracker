@@ -1,7 +1,7 @@
-img {
+/* img {
     max-width: 30%;
     height: auto;
-}
+} */
 
 .movie-details-page-img {
     max-width: 75%;
@@ -15,6 +15,7 @@ img {
 .movie-title {
     font-family: Helvetica Neue;
     text-transform: uppercase;
+    color: #222831;
 }
 
 .movie-card {

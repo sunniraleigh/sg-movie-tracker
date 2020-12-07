@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% block title %} Studio Ghibli Movie Tracker {% endblock %}
 {% block body %}
-<div class="container-fluid">
-{% for movie in movies %}
-<div class="movie-card">
-    <img src="{{ movie.image_url }}">
-    <h2><a href='/{{ movie.movie_id }}'>{{ movie.title }}</a></h2>
-</div>
-{% endfor %}
+<div class="container">
+    <div class="row">
+        {% for movie in movies %}
+        <div class="col-4">
+            <div class="card text-center">
+                <img class="card-img" src="{{ movie.image_url }}">
+                <div class="card-body">
+                    <h2 class="movie-title"><a class="movie-title" href="/{{ movie.movie_id }}">{{ movie.title }}</a></h2>
+                    <h3 class="movie-title">{{ movie.year_released }}</h3>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
