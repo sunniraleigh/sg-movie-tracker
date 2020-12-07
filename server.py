@@ -184,6 +184,7 @@ def logout_user():
 
     del session['current_user']
     flash('Logged out.')
+    
     return redirect('/')
 
 if __name__ == '__main__':

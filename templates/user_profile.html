@@ -1,49 +1,87 @@
 {% extends 'base.html' %}
 {% block title %} Studio Ghibli Movie Tracker {% endblock %}
 {% block body %}
-<h1>{{ user.username }}</h1>
-<di>
-    <h2>User stats</h2>
-    <p>
-        Movies watched: {{ movies_watched_count }}
-    </p>
-    <p>
-        Reviews written: {{ reviews_written_count }}
-    </p>
-    <p>
-        Ratings given: {{ ratings_given_count }}
-    </p>
-</di>
-<div>
-    <h2>List of movies watched</h2>
-    {% for movie in seenlist %}
-    <p>{{ movie.movies.title }}</p>
-    {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ user.username }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card user-stats-card shadow-sm">
+                <h2 class="card-title">User stats</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Movies watched: {{ movies_watched_count }}
+                    </li>
+                    <li class="list-group-item">
+                        Reviews written: {{ reviews_written_count }}
+                    </li>
+                    <li class="list-group-item">
+                        Ratings given: {{ ratings_given_count }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card user-seenlist shadow-sm">
+                <h2 class="card-title">Seen List</h2>
+                <ul class="list-group list-group-flush">
+                    {% for movie in seenlist %}
+                    <li class="list-group-item">{{ movie.movies.title }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card user-watchlist shadow-sm">
+                <h2 class="card-title">Watch List</h2>
+                <ul class="list-group list-group-flush">
+                    {% for movie in watchlist %}
+                    <li class="list-group-item">{{ movie.movies.title }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- put on the right side -->
+        <div class="col-4">
+            <form action="/logout" method="POST">
+                <button class="btn btn-outline-danger">Logout</button>
+            </form>
+        </div>
+        <div class="col-8">
+            <button class="btn btn-light"><a href="/">Explore more movies</a></button>
+        </div>
+    </div>
+    <div class="row">
+        <!-- put on the right side -->
+        <div class="col-8">
+            <h2>Reviews</h2>
+            {% if reviews_written_count == 0 %}
+            You have not written a review yet!
+            {% else %}
+            <ul class="list-group list-group-flush">
+                {% for review in reviews %}
+                <li class="list-group-item">
+                    <div class="card">
+                        {{ review.users.username }}
+                        {{ review.timestamp }}
+                        {{ review.review_content }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
 </div>
-<div>
-    <h2>Watchlist</h2>
-    {% for movie in watchlist %}
-    <p>{{ movie.movies.title }}</p>
-    {% endfor %}
-</div>
-<form action="/">
-    <button>Explore more movies</button>
-</form>
+
 <div>
     <h2>Reviews</h2>
-    {% if reviews_written_count == 0%}
-    You have not written a review yet!
-    {% else %}
-    {% for review in reviews %}
-    <div>
-        {{ review.users.username }}
-        {{ review.timestamp }}
-        {{ review.review_content }}
-    </div>
-    {% endfor %}
-    {% endif %}
+    
 </div>
-<form action="/logout" method="POST">
-    <button>Logout</button>
-</form>
+
 {% endblock %}
