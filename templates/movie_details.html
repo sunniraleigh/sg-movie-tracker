@@ -39,13 +39,13 @@
             {% if seen %}
             <p>
                 <form action="/remove_from_seen{{ movie.movie_id }}", method="POST">
-                    <button type="submit" class="btn btn-primary remove">Remove from Movies Seen</button>
+                    <button type="submit" class="btn btn-danger">Remove from Movies Seen</button>
                 </form>
             </p>
             {% else %}
             <p>
                 <form action="/submit_seen{{ movie.movie_id }}", method="POST">
-                    <button type="submit" class="btn btn-primary add">Add to Movies Seen</button>
+                    <button type="submit" class="btn btn-success">Add to Movies Seen</button>
                 </form>
             </p>
             {% endif %}
@@ -53,13 +53,13 @@
             {% if watchlist%}
             <p>
                 <form action="/remove_from_watchlist{{ movie.movie_id }}", method="POST">
-                    <button type="submit" class="btn btn-primary remove">Remove from Watchlist</button>
+                    <button type="submit" class="btn btn-danger">Remove from Watchlist</button>
                 </form>
             </p>
             {% else %}
             <p>
                 <form action="/submit_watchlist{{ movie.movie_id }}", method="POST">
-                    <button type="submit" class="btn btn-primary add">Add to Watchlist</button>
+                    <button type="submit" class="btn btn-success">Add to Watchlist</button>
                 </form>
             </p>
             {% endif %}
@@ -97,7 +97,6 @@
                 {% endfor %}
             </div>
         </div>
-        
     </div>
 </div>
 
