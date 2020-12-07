@@ -2,3 +2,25 @@ img {
     max-width: 30%;
     height: auto;
 }
+
+.movie-details-page-img {
+    max-width: 75%;
+    height: auto;
+}
+
+body {
+    background-color: #e8e8e8;
+}
+
+.movie-title {
+    font-family: Helvetica Neue;
+    text-transform: uppercase;
+}
+
+.movie-card {
+    background-color: seashell;
+}
+
+/* .movie-title */
+/* .remove */
+/* .add */
