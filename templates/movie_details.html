@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-5 text-center movie-card">
             <img class="movie-details-page-img" src="{{ movie.image_url }}">
-            <h1 class="movie-title">{{ movie.title }}</h1>
+            <h1 class="movie-title" id="movie-title{{ movie.movie_id }}">{{ movie.title }}</h1>
             <p>Site Rating: {{ site_rating }}</p>
             {% if rating is not none%}
             Your rating: {{ rating.score }}
@@ -77,10 +77,10 @@
             <!-- Movie Reviews -->
             <div class="movie-reviews">
                 
-                <form action="/submit_review{{ movie.movie_id }}" method="POST">
+                <form id="create-review-form" action="/submit_review" method="POST">
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Write a review.</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="new_review"></textarea>
+                        <label for="new-review-text">Write a review.</label>
+                        <textarea class="form-control" id="new-review-text" rows="3"></textarea>
                       </div>
                     <p>
                         <input type="submit">

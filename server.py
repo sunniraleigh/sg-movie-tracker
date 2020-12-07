@@ -67,13 +67,18 @@ def view_current_user_profile():
     ratings_given_count=ratings_given_count, seenlist=seenlist, watchlist=watchlist, reviews=reviews)
 
 
-@app.route('/submit_review<movie_id>', methods=['POST'])
-def add_new_review(movie_id):
+@app.route('/submit_review', methods=['POST'])
+def add_new_review():
     """Adds user's new review to the db."""
 
     timestamp = datetime.now()
     user_id = session['current_user']
     review_content = request.form.get('new_review')
+    movie_title = request.form.get('movie_title')
+
+    movie_id = crud.get_movie_by_title(movie_title)
+
+    print('REVIEW CONTENT*****!!!', review_content)
 
     crud.create_review(timestamp, user_id, movie_id, review_content)
 

@@ -62,6 +62,13 @@ def return_movie_by_id(movie_id):
 
     return Movie.query.get(movie_id)
 
+def get_movie_by_title(movie_title):
+    """Return a single movie by its title."""
+
+    movie = Movie.query.filter(movie_title == movie_title).first()
+
+    return movie.movie_id
+
 def return_director_by_movie(movie_id):
     """Return the director of a movie."""
 
