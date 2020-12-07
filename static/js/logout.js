@@ -1,6 +1,6 @@
 // send post request for logging out
 
-$('#logout-btn').on('click', (evt) => {
+$('#logout-form').on('submit', (evt) => {
     evt.preventDefault();
 
     $.post('/logout', (response) => {

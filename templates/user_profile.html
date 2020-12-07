@@ -48,8 +48,8 @@
     <div class="row">
         <!-- put on the right side -->
         <div class="col-4">
-            <form action="/logout" method="POST">
-                <button class="btn btn-outline-danger">Logout</button>
+            <form id="logout-form" action="/logout" method="POST">
+                <button type="submit" class="btn btn-outline-danger">Logout</button>
             </form>
         </div>
         <div class="col-8">
@@ -78,10 +78,4 @@
         </div>
     </div>
 </div>
-
-<div>
-    <h2>Reviews</h2>
-    
-</div>
-
 {% endblock %}
