@@ -77,10 +77,10 @@
             <!-- Movie Reviews -->
             <div class="movie-reviews">
                 
-                <form id="create-review-form" action="/submit_review" method="POST">
+                <form id="create-review-form" action="/submit_review{{ movie.movie_id }}" method="POST">
                     <div class="form-group">
-                        <label for="new-review-text">Write a review.</label>
-                        <textarea class="form-control" id="new-review-text" rows="3"></textarea>
+                        <label for="exampleFormControlTextarea1">Write a review.</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="new_review"></textarea>
                       </div>
                     <p>
                         <input type="submit">
