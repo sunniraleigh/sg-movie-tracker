@@ -111,7 +111,7 @@ def return_movie_site_rating(movie_id):
         if rating != None:
             sum_rating += rating.score
     
-    return sum_rating/len(ratings) if len(ratings)!=0 else sum_rating
+    return round(sum_rating/len(ratings)) if len(ratings)!=0 else sum_rating
 
 def get_rating_by_user_movie(user_id, movie_id):
     """Return a rating by user_id and movie_id."""

@@ -21,9 +21,104 @@
 
 
 /* movie details page styles */
+.movie-details-row {
+    margin-top: 5%;
+}
+
 .movie-details-page-img {
     max-width: 75%;
     height: auto;
+    margin: 0 auto;
+}
+
+.movie-card-details-page {
+    /* max-width: 320px;
+    height: 670px; */
+    padding: 5% 5% 5% 5%;
+}
+
+.movie-details-card {
+    padding: 5% 5% 5% 5%;
+}
+
+.release-year {
+    font-family: "Helvetica Neue";
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: larger;
+    color: #263956;
+}
+
+.overview {
+    font-family: Helvetica;
+    color: #263956;
+}
+
+.add-btn {
+    color: #263956;
+    background-color: #D5E0D2;
+    border-color: #D5E0D2;
+    margin-top: 5px;
+}
+
+.add-btn:hover {
+    color: #263956;
+    background-color: #b1dfa4;
+    border-color: #b1dfa4;
+}
+
+.rm-btn {
+    color: white;
+    background-color: #D7A6B5;
+    border-color: #D7A6B5;
+    margin-top: 5px;
+}
+
+.rm-btn:hover {
+    color: white;
+    background-color: #cf7993;
+    border-color: #cf7993;
+}
+
+.review-form-card {
+    margin-top: 5%;
+    padding: 5% 5% 5% 5%;
+}
+
+.review-submit-btn {
+    color: white;
+    background-color: #2091C4;
+    border-color: #2091C4;
+    margin-right: 25%;
+}
+
+.review-submit-btn:hover {
+    color: white;
+    background-color: #0977aa;
+    border-color: #0977aa;
+}
+
+.review-card {
+    margin-top: 5%;
+    padding: 5% 5% 5% 5%;
+}
+
+.username {
+    font-family: "Helvetica Neue";
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.date {
+    font-weight: lighter;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.review-content {
+    margin-top: 5px;
+
 }
 
 /* login page styles */
@@ -80,16 +175,3 @@
     text-align: center;
     margin: 0 auto;
 }
-
-/* .movie-card {
-} */
-
-/* .movie-title */
-/* .remove */
-/* .add */
-
-
-/* .login-form-input {
-    background-color: white;
-    opacity: 95% !important;
-} */

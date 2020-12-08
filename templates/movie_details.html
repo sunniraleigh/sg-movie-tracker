@@ -2,95 +2,93 @@
 {% block title %} Studio Ghibli Movie Tracker {% endblock %}
 {% block body %}
 <div class="container">
-    <div class="row">
-        <div class="col-5 text-center movie-card">
-            <img class="movie-details-page-img" src="{{ movie.image_url }}">
-            <h1 class="movie-title" id="movie-title{{ movie.movie_id }}">{{ movie.title }}</h1>
-            <p>Site Rating: {{ site_rating }}</p>
-            {% if rating is not none%}
-            Your rating: {{ rating.score }}
-            {% else %}
-            <p>
-                <form action="/submit_rating{{ movie.movie_id }}" method="POST">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="score" id="inlineRadio1" value="1">
-                        <label class="form-check-label" for="inlineRadio1">1</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="score" id="inlineRadio2" value="2">
-                        <label class="form-check-label" for="inlineRadio2">2</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="score" id="inlineRadio2" value="3">
-                        <label class="form-check-label" for="inlineRadio2">3</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="score" id="inlineRadio2" value="4">
-                        <label class="form-check-label" for="inlineRadio2">4</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="score" id="inlineRadio2" value="5">
-                        <label class="form-check-label" for="inlineRadio2">5</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit Rating</button>
-                </form>
-            </p>
-            {% endif %}
-            {% if seen %}
-            <p>
-                <form action="/remove_from_seen{{ movie.movie_id }}", method="POST">
-                    <button type="submit" class="btn btn-danger">Remove from Movies Seen</button>
-                </form>
-            </p>
-            {% else %}
-            <p>
-                <form action="/submit_seen{{ movie.movie_id }}", method="POST">
-                    <button type="submit" class="btn btn-success">Add to Movies Seen</button>
-                </form>
-            </p>
-            {% endif %}
+    <div class="row movie-details-row">
+        <div class="col-5 text-center">
+            <div class="card rounded-0 shadow-sm text-center movie-card-details-page">
+                <img class="movie-details-page-img" src="{{ movie.image_url }}">
+                <h1 class="movie-title" id="movie-title{{ movie.movie_id }}">{{ movie.title }}</h1>
+                <p>Site Rating: {{ site_rating }}</p>
+                {% if rating is not none%}
+                Your rating: {{ rating.score }}
+                {% else %}
+                <p>
+                    <form action="/submit_rating{{ movie.movie_id }}" method="POST">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="score" id="inlineRadio1" value="1">
+                            <label class="form-check-label" for="inlineRadio1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="score" id="inlineRadio2" value="2">
+                            <label class="form-check-label" for="inlineRadio2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="score" id="inlineRadio2" value="3">
+                            <label class="form-check-label" for="inlineRadio2">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="score" id="inlineRadio2" value="4">
+                            <label class="form-check-label" for="inlineRadio2">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="score" id="inlineRadio2" value="5">
+                            <label class="form-check-label" for="inlineRadio2">5</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Rating</button>
+                    </form>
+                </p>
+                {% endif %}
+                <p>
+                {% if seen %}
+                    <form action="/remove_from_seen{{ movie.movie_id }}", method="POST">
+                        <button type="submit" class="btn rm-btn">Remove from Seen List</button>
+                    </form>
+                {% else %}
+                    <form action="/submit_seen{{ movie.movie_id }}", method="POST">
+                        <button type="submit" class="btn add-btn">Add to Seen List</button>
+                    </form>
+                {% endif %}
 
-            {% if watchlist%}
-            <p>
-                <form action="/remove_from_watchlist{{ movie.movie_id }}", method="POST">
-                    <button type="submit" class="btn btn-danger">Remove from Watchlist</button>
-                </form>
-            </p>
-            {% else %}
-            <p>
-                <form action="/submit_watchlist{{ movie.movie_id }}", method="POST">
-                    <button type="submit" class="btn btn-success">Add to Watchlist</button>
-                </form>
-            </p>
-            {% endif %}
-        </div>
-
-        <div class="col-7 movie-details">
-            <p>Year Released: {{ movie.year_released }}</p>
-            <p>Overview:</p>
-            <p>{{ movie.overview }}</p>
-            <p>Director: {% for castcrew in director %} {{ castcrew.name }}{% endfor %}</p>
-            <p>Producer: {% for castcrew in director %} {{ castcrew.name }} {% endfor %}</p>
-            {% if movie.duration is not none %}
-            <p>Duration: {{movie.duration}}</p>
-            {% endif %}
+                {% if watchlist%}
+                    <form action="/remove_from_watchlist{{ movie.movie_id }}", method="POST">
+                        <button type="submit" class="btn rm-btn">Remove from Watchlist</button>
+                    </form>
+                {% else %}
+                    <form action="/submit_watchlist{{ movie.movie_id }}", method="POST">
+                        <button type="submit" class="btn add-btn">Add to Watchlist</button>
+                    </form>
+                {% endif %}
+                </p>
+            </div>
+        </div><!--
+        --><div class="col-7">
+            <div class="card movie-details-card rounded-0 shadow-sm">
+                <p class="release-year">{{ movie.year_released }}</p>
+                <p>{{ movie.overview }}</p>
+                <p>Director: {% for castcrew in director %} {{ castcrew.name }}{% endfor %}</p>
+                <p>Producer: {% for castcrew in director %} {{ castcrew.name }} {% endfor %}</p>
+                {% if movie.duration is not none %}
+                <p>Duration: {{movie.duration}}</p>
+                {% endif %}
+            </div>
+            
             <!-- Movie Reviews -->
-            <div class="movie-reviews">
-                
+            <div class="card review-form-card">
                 <form id="create-review-form" action="/submit_review{{ movie.movie_id }}" method="POST">
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Write a review.</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="new_review"></textarea>
                       </div>
-                    <p>
-                        <input type="submit">
-                    </p>
+                    <button class="btn review-submit-btn text-center" type="submit">Submit Review</button>
                 </form>
                 {% for review in movie.reviews %}
-                    <div>
-                        <p>
-                            {{ review.users.username }} |
-                            {{ review.timestamp.day }}-{{ review.timestamp.month }}-{{ review.timestamp.year }}
+                    <div class="card review-card">
+                        <p class="username">
+                            {{ review.users.username }}
+                        </p>
+                        <p class="date">
+                            {{ review.timestamp.month }}-{{ review.timestamp.day }}-{{ review.timestamp.year }}
+                        </p>
+                        <p class="review-content">
                             {{ review.review_content }}
                         </p>
                     </div>
