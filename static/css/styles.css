@@ -89,7 +89,6 @@
     color: white;
     background-color: #2091C4;
     border-color: #2091C4;
-    margin-right: 25%;
 }
 
 .review-submit-btn:hover {
@@ -160,6 +159,11 @@
     font-family: "Helvetica Neue";
     text-transform: uppercase;
     color: #263956;
+}
+
+.movie-title:hover {
+    color: #D7A6B5;
+    text-decoration: underline;
 }
 
 .movie-card {
