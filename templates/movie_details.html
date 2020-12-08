@@ -62,6 +62,7 @@
         </div><!--
         --><div class="col-7">
             <div class="card movie-details-card rounded-0 shadow-sm">
+                <h4 style="font-family: 'Helvetica Neue';text-transform: uppercase; color: #222831;">{{ movie.title }}</h4>
                 <p class="release-year">{{ movie.year_released }}</p>
                 <p>{{ movie.overview }}</p>
                 <p>Director: {% for castcrew in director %} {{ castcrew.name }}{% endfor %}</p>
