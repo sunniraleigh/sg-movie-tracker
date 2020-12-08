@@ -2,44 +2,49 @@
 {% block title %} Studio Ghibli Movie Tracker {% endblock %}
 {% block body %}
 <div class="container">
-    <div class="row">
+    <div class="row" style="margin-top: 25px;">
         <div class="col-4">
             <h1>{{ user.username }}</h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-top: 5px;">
         <div class="col-4">
-            <div class="card user-stats-card shadow-sm">
-                <h2 class="card-title">User stats</h2>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        Movies watched: {{ movies_watched_count }}
+            <div class="card user-stats-card rounded-0 shadow-sm">
+                <h2 class="card-title list-title">Your Stats</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center">
+                        Movies watched: <h4>{{ movies_watched_count }}</h4>
                     </li>
-                    <li class="list-group-item">
-                        Reviews written: {{ reviews_written_count }}
+                    <li class="list-group-item text-center">
+                        Reviews written: <h4>{{ reviews_written_count }}</h4>
                     </li>
-                    <li class="list-group-item">
-                        Ratings given: {{ ratings_given_count }}
+                    <li class="list-group-item text-center">
+                        Ratings given: <h4>{{ ratings_given_count }}</h4>
                     </li>
                 </ul>
+                <div class="text-center movie-details-row">
+                    <form id="logout-form" action="/logout" method="POST">
+                        <button type="submit" class="btn rm-btn">Logout</button>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="col-4">
-            <div class="card user-seenlist shadow-sm">
-                <h2 class="card-title">Seen List</h2>
+            <div class="card user-seenlist rounded-0 shadow-sm">
+                <h2 class="card-title list-title">Seen List</h2>
                 <ul class="list-group list-group-flush">
                     {% for movie in seenlist %}
-                    <li class="list-group-item">{{ movie.movies.title }}</li>
+                    <li class="list-group-item"><a class="review-movie-title" href="/{{ movie.movies.movie_id }}">{{ movie.movies.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
         <div class="col-4">
-            <div class="card user-watchlist shadow-sm">
-                <h2 class="card-title">Watch List</h2>
+            <div class="card user-watchlist rounded-0 shadow-sm">
+                <h2 class="card-title list-title">Watch List</h2>
                 <ul class="list-group list-group-flush">
                     {% for movie in watchlist %}
-                    <li class="list-group-item">{{ movie.movies.title }}</li>
+                    <li class="list-group-item"><a class="review-movie-title" href="/{{ movie.movies.movie_id }}">{{ movie.movies.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -48,33 +53,32 @@
     <div class="row">
         <!-- put on the right side -->
         <div class="col-4">
-            <form id="logout-form" action="/logout" method="POST">
-                <button type="submit" class="btn btn-outline-danger">Logout</button>
-            </form>
+            
         </div>
         <div class="col-8">
-            <button class="btn btn-light"><a href="/">Explore more movies</a></button>
-        </div>
-    </div>
-    <div class="row">
-        <!-- put on the right side -->
-        <div class="col-8 align-self-end">
-            <h2>Reviews</h2>
+            <div class="text-center">
+                <button class="btn review-submit-btn"><a style="color: white;" href="/">Explore more movies</a></button>
+            </div>
+            <div class="card review-form-card rounded-0 shadow-sm">
+            <h2>Reviews written by you!</h2>
             {% if reviews_written_count == 0 %}
             You have not written a review yet!
             {% else %}
-            <ul class="list-group list-group-flush">
                 {% for review in reviews %}
-                <li class="list-group-item">
-                    <div class="card">
-                        {{ review.users.username }}
-                        {{ review.timestamp }}
-                        {{ review.review_content }}
+                    <div class="card review-card rounded-0 shadow-sm">
+                        <p>
+                            <a class="review-movie-title" href="/{{ review.movies.movie_id }}">{{ review.movies.title }}</a>
+                        </p>
+                        <p class="date">
+                            {{ review.timestamp.month }}-{{ review.timestamp.day }}-{{ review.timestamp.year }}
+                        </p>
+                        <p class="review-content">
+                            {{ review.review_content }}
+                        </p>
                     </div>
-                </li>
                 {% endfor %}
-            </ul>
             {% endif %}
+            </div>
         </div>
     </div>
 </div>

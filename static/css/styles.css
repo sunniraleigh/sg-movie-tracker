@@ -1,6 +1,6 @@
 /* navbar styles */
 .navbar-custom-color {
-    background-color: #263956;
+    background-color: black;
 }
 
 .navbar-text-custom-color {
@@ -46,23 +46,23 @@
     text-transform: uppercase;
     font-weight: bold;
     font-size: larger;
-    color: #263956;
+    color: black;
 }
 
 .overview {
     font-family: Helvetica;
-    color: #263956;
+    color: black;
 }
 
 .add-btn {
-    color: #263956;
+    color: black;
     background-color: #D5E0D2;
     border-color: #D5E0D2;
     margin-top: 5px;
 }
 
 .add-btn:hover {
-    color: #263956;
+    color: black;
     background-color: #b1dfa4;
     border-color: #b1dfa4;
 }
@@ -158,7 +158,7 @@
 .movie-title {
     font-family: "Helvetica Neue";
     text-transform: uppercase;
-    color: #263956;
+    color: black;
 }
 
 .movie-title:hover {
@@ -178,4 +178,34 @@
     max-width: 320px;
     text-align: center;
     margin: 0 auto;
+}
+
+/* user profile styles */
+.review-movie-title {
+    font-family: "Helvetica Neue";
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0px;
+    color: #263956;
+}
+
+.review-movie-title:hover {
+    color: #D7A6B5;
+    text-decoration: underline;
+}
+
+.user-watchlist {
+    padding: 5% 5% 5% 5%;
+}
+
+.list-title {
+    font-family: "Helvetica Neue";
+}
+
+.user-seenlist {
+    padding: 5% 5% 5% 5%;
+}
+
+.user-stats-card {
+    padding: 5% 5% 5% 5%;
 }

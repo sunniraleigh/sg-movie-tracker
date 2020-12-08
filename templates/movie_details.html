@@ -6,7 +6,7 @@
         <div class="col-5 text-center">
             <div class="card rounded-0 shadow-sm text-center movie-card-details-page">
                 <img class="movie-details-page-img" src="{{ movie.image_url }}">
-                <h1 class="movie-title" id="movie-title{{ movie.movie_id }}">{{ movie.title }}</h1>
+                <h2 class="movie-title" id="movie-title{{ movie.movie_id }}">{{ movie.title }}</h2>
                 <p>Site Rating: {{ site_rating }}</p>
                 {% if rating is not none%}
                 Your rating: {{ rating.score }}
