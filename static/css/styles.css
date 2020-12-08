@@ -24,7 +24,7 @@
 }
 
 .background-img {
-    background-image: url('https://wallpaperaccess.com/full/42617.jpg');
+    background-image: url('https://i.pinimg.com/originals/c3/b1/9a/c3b19abb18ea0b45441b247935685618.jpg');
 }
 
 /* body {
@@ -34,12 +34,17 @@
 .movie-title {
     font-family: "Helvetica Neue";
     text-transform: uppercase;
-    color: #222831;
+    color: #263956;
 }
 
-.movie-card {
-    background-color: seashell;
+.movie-card-img {
+    margin: 5% 5% 5% 5%;
+    height: auto;
+    max-width: 90%;
 }
+
+/* .movie-card {
+} */
 
 /* .movie-title */
 /* .remove */
@@ -52,3 +57,29 @@
 #login-form {
     display: flexbox;
 }
+
+.login-page-forms {
+    margin-top: 15%;
+}
+
+.login-page-form {
+    padding: 5% 5% 5% 5%;
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.login-button {
+    color: white;
+    background-color: #D7A6B5;
+    border-color: #D7A6B5;
+}
+
+.login-button:hover {
+    color: white;
+    background-color: #cf7993;
+    border-color: #cf7993;
+}
+
+/* .login-form-input {
+    background-color: white;
+    opacity: 95% !important;
+} */

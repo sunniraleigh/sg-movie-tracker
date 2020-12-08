@@ -4,42 +4,46 @@
 {% block navbar %}{% endblock %}
 {% block body %}
 <div class="container-fluid">
-    <div class="row align-items-center">
+    <div class="row login-page-forms">
         <!-- Create an account form -->
         <div class="col-6">
             <!-- <div class="card"> -->
-                <h2>Sign Up!</h2>
-                <form class="form-signin" id="create-account-form" action="/create_account" method="POST">
-                    <div class="form-group">
-                        <label for="create-account-email" class="sr-only">Email address</label>
-                        <input type="email" id="create-account-email" class="form-control" placeholder="Email address" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="create-account-username" class="sr-only">Username</label>
-                        <input type="username" id="create-account-username" class="form-control" placeholder="Username" name="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="create-account-password" class="sr-only">Password</label>
-                        <input type="password" id="create-account-password" class="form-control" placeholder="Password" name="password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Create Account</button>
-                </form>
+                <div class="card text-center login-page-form">
+                    <h2>Sign Up!</h2>
+                    <form class="form-signin" id="create-account-form" action="/create_account" method="POST">
+                        <div class="form-group">
+                            <label for="create-account-email" class="sr-only">Email address</label>
+                            <input type="email" id="create-account-email" class="form-control login-form-input" placeholder="Email address" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="create-account-username" class="sr-only">Username</label>
+                            <input type="username" id="create-account-username" class="form-control login-form-input" placeholder="Username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="create-account-password" class="sr-only">Password</label>
+                            <input type="password" id="create-account-password" class="form-control login-form-input" placeholder="Password" name="password">
+                        </div>
+                        <button type="submit" class="btn login-button">Create Account</button>
+                    </form>
+                </div>
             </div>
         <!-- Login form -->
             <!-- <div class="card"> -->
             <div class="col-6">
-                <h2>Login</h2>
-                <form id="login-form" action="/login" method="POST">
-                <div class="form-group">
-                    <label for="login-username-email" class="sr-only">Email address</label>
-                    <input type="text" id="login-username-email" class="form-control" placeholder="Email address or Username" name="username_email">
+                <div class="card text-center login-page-form">
+                    <h2>Login</h2>
+                    <form id="login-form" action="/login" method="POST">
+                    <div class="form-group login-form-input">
+                        <label for="login-username-email" class="sr-only">Email address</label>
+                        <input type="text" id="login-username-email" class="form-control" placeholder="Email address or Username" name="username_email">
+                    </div>
+                    <div class="form-group login-form-input">
+                        <label for="login-password" class="sr-only">Password</label>
+                        <input type="password" id="login-password" class="form-control" placeholder="Password" name="password">
+                    </div>
+                    <button type="submit" class="btn login-button">Login</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="login-password" class="sr-only">Password</label>
-                    <input type="password" id="login-password" class="form-control" placeholder="Password" name="password">
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-                </form>
             </div>
         </div>
     </div>
