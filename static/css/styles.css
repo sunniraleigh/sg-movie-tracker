@@ -37,10 +37,18 @@
     color: #263956;
 }
 
+.movie-card {
+    max-width: 320px;
+    height: 640px;
+    padding: 5% 5% 5% 5%;
+    margin-top: 5%;
+}
+
 .movie-card-img {
-    margin: 5% 5% 5% 5%;
-    height: auto;
-    max-width: 90%;
+    max-height: auto;
+    max-width: 320px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 /* .movie-card {

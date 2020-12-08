@@ -2,11 +2,11 @@
 {% block title %} Studio Ghibli Movie Tracker {% endblock %}
 {% block body %}
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-md-center">
         <div class="card-deck">
             {% for movie in movies %}
-            <div class="col-4" style="width: 18rem;">
-                <div class="card rounded-0 shadow-sm">
+            <div class="col-4 align-self-center " style="width: 18rem;">
+                <div class="card rounded-0 shadow-sm text-center movie-card">
                     <img class="card-img rounded-0 movie-card-img" src="{{ movie.image_url }}">
                     <div class="card-body">
                         <h2 class="card-title movie-title"><a class="movie-title" href="/{{ movie.movie_id }}">{{ movie.title }}</a></h2>
