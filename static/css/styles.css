@@ -1,14 +1,21 @@
 .navbar-custom-color {
-    background-color: #30475e;
-    color: #e8e8e8;
+    background-color: #263956;
 }
 
 .navbar-text-custom-color {
-    color: #e8e8e8;
+    color: white;
 }
 
 .navbar-text-custom-color:hover {
-    color: #f05454;
+    color: #D7A6B5;
+}
+
+.navbar-custom-brand-color {
+    color: #D7A6B5;
+}
+
+.navbar-custom-brand-color:hover {
+    color: white;
 }
 
 .movie-details-page-img {
@@ -17,7 +24,7 @@
 }
 
 .background-img {
-    background-image: url('https://i.pinimg.com/originals/c4/9e/04/c49e046e20c75b74f739c227f9500551.jpg');
+    background-image: url('https://wallpaperaccess.com/full/42617.jpg');
 }
 
 /* body {

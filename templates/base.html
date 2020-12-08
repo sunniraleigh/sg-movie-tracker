@@ -29,9 +29,10 @@
 
     </head>
     <body class="{% block body_class %}{% endblock %}">
+        {% block navbar %}
         <nav class="navbar navbar-expand-md sticky-top navbar-custom-color">
             <div class="container fluid">
-                <a class="navbar-brand" href="#"><img src="static/img/logo.png"></a>
+                <a class="navbar-brand navbar-custom-brand-color" href="/">Studio Ghibli Movie Tracker</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                     <span class="navbar-toggle-icon"></span>
                 </button>
@@ -50,6 +51,7 @@
 
             </div>
         </nav>
+        {% endblock %}
 
         {% for msg in get_flashed_messages() %}
         <div class="alert alert-success text-center">
