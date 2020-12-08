@@ -134,7 +134,7 @@
 }
 
 .login-page-forms {
-    margin-top: 15%;
+    margin-top: 10%;
 }
 
 .login-page-form {
@@ -152,6 +152,10 @@
     color: white;
     background-color: #cf7993;
     border-color: #cf7993;
+}
+
+.login-page-img {
+    margin-left: 35%;
 }
 
 /* homepage styles */
