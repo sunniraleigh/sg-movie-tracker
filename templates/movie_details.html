@@ -89,8 +89,8 @@
                 {% for review in movie.reviews %}
                     <div>
                         <p>
-                            {{ review.users.username }}
-                            {{ review.timestamp }}
+                            {{ review.users.username }} |
+                            {{ review.timestamp.day }}-{{ review.timestamp.month }}-{{ review.timestamp.year }}
                             {{ review.review_content }}
                         </p>
                     </div>

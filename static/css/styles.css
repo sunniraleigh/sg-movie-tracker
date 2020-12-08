@@ -1,11 +1,23 @@
-/* img {
-    max-width: 30%;
-    height: auto;
-} */
+.navbar-custom-color {
+    background-color: #30475e;
+    color: #e8e8e8;
+}
+
+.navbar-text-custom-color {
+    color: #e8e8e8;
+}
+
+.navbar-text-custom-color:hover {
+    color: #f05454;
+}
 
 .movie-details-page-img {
     max-width: 75%;
     height: auto;
+}
+
+.background-img {
+    background-image: url('https://i.pinimg.com/originals/c4/9e/04/c49e046e20c75b74f739c227f9500551.jpg');
 }
 
 /* body {
@@ -25,3 +37,11 @@
 /* .movie-title */
 /* .remove */
 /* .add */
+
+#create-account-form {
+    display: flexbox;
+}
+
+#login-form {
+    display: flexbox;
+}

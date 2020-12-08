@@ -28,8 +28,8 @@
         {% block head %}{% endblock %}
 
     </head>
-    <body>
-        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <body class="{% block body_class %}{% endblock %}">
+        <nav class="navbar navbar-expand-md sticky-top navbar-custom-color">
             <div class="container fluid">
                 <a class="navbar-brand" href="#"><img src="static/img/logo.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
@@ -38,12 +38,12 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <!-- Home -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
+                        <li class="nav-item active">
+                            <a class="nav-link navbar-text-custom-color" href="/">Home</a>
                         </li>
                         <!-- User profile -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user_profile">Profile</a>
+                        <li class="nav-item active">
+                            <a class="nav-link navbar-text-custom-color" href="/user_profile">Profile</a>
                         </li>
                     </ul>
                 </div>
@@ -52,7 +52,9 @@
         </nav>
 
         {% for msg in get_flashed_messages() %}
-        <p class='flash-msg'>{{ msg }}</p>
+        <div class="alert alert-success text-center">
+            <p class='flash-msg'>{{ msg }}</p>
+        </div>
         {% endfor %}
         
         {% block body %}{% endblock %}
