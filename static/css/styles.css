@@ -1,3 +1,4 @@
+/* navbar styles */
 .navbar-custom-color {
     background-color: #263956;
 }
@@ -18,45 +19,17 @@
     color: white;
 }
 
+
+/* movie details page styles */
 .movie-details-page-img {
     max-width: 75%;
     height: auto;
 }
 
+/* login page styles */
 .background-img {
     background-image: url('https://i.pinimg.com/originals/c3/b1/9a/c3b19abb18ea0b45441b247935685618.jpg');
 }
-
-/* body {
-    background-color: #e8e8e8;
-} */
-
-.movie-title {
-    font-family: "Helvetica Neue";
-    text-transform: uppercase;
-    color: #263956;
-}
-
-.movie-card {
-    max-width: 320px;
-    height: 640px;
-    padding: 5% 5% 5% 5%;
-    margin-top: 5%;
-}
-
-.movie-card-img {
-    max-height: auto;
-    max-width: 320px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-/* .movie-card {
-} */
-
-/* .movie-title */
-/* .remove */
-/* .add */
 
 #create-account-form {
     display: flexbox;
@@ -86,6 +59,35 @@
     background-color: #cf7993;
     border-color: #cf7993;
 }
+
+/* homepage styles */
+.movie-title {
+    font-family: "Helvetica Neue";
+    text-transform: uppercase;
+    color: #263956;
+}
+
+.movie-card {
+    max-width: 320px;
+    height: 640px;
+    padding: 5% 5% 5% 5%;
+    margin-top: 5%;
+}
+
+.movie-card-img {
+    max-height: auto;
+    max-width: 320px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* .movie-card {
+} */
+
+/* .movie-title */
+/* .remove */
+/* .add */
+
 
 /* .login-form-input {
     background-color: white;
