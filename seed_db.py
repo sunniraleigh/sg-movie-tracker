@@ -79,12 +79,12 @@ for n in range(10):
 
         crud.create_rating(user_id, movie_id, score)
     
-    for n in range(2):
-        timestamp = fake.past_datetime(start_date='-30d')
-        movie_id = choice(movies_in_db).movie_id
-        review_content = fake.text()
+    # for n in range(2):
+    #     timestamp = fake.past_datetime(start_date='-30d')
+    #     movie_id = choice(movies_in_db).movie_id
+    #     review_content = fake.text()
 
-        crud.create_review(timestamp, user_id, movie_id, review_content)
+    #     crud.create_review(timestamp, user_id, movie_id, review_content)
     
     for n in range(3):
         movie_id = choice(movies_in_db).movie_id
