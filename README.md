@@ -6,18 +6,22 @@ The Studio Ghibli Tracker allows the user to keep track of the Studio Ghibli fil
 
 [Watch a video demo of the app here!](https://www.youtube.com/watch?v=7IYSztzpgFQ)
 
----
 
 # Content
 - [Tech Stack](#tech-stack)
 - [App Features](#app-features)
 
----
-
 # <a name="tech-stack"></a> Tech Stack 
 
-
----
+- Python
+- PostgreSQL
+- SQLAlchemy
+- jQuery
+- Flask
+- Jinja
+- HTML
+- CSS
+- Bootstrap
 
 # <a name="app-features"></a> App Features
 
@@ -85,3 +89,7 @@ Each user has their own profile page where they can view their statistics, their
     <img width=75% alt="user-profile-screenshot1" src="static/img/user_profile1.png">
     <img width=75% alt="user-profile-screenshot2" src="static/img/user_profile2.png">
 </h1>
+
+---
+
+Thank you for reading about the Studio Ghibli Movie Tracker :)
