@@ -4,7 +4,7 @@
 
 The Studio Ghibli Tracker allows the user to keep track of the Studio Ghibli films they’ve seen, explore details about the film, and rate and review them.
 
-[Watch a video demo of the app here!](https://www.youtube.com/watch?v=7IYSztzpgFQ)
+### [Watch a video demo of the app here!](https://www.youtube.com/watch?v=7IYSztzpgFQ)
 
 
 # Content
