@@ -19,7 +19,7 @@ The Studio Ghibli Tracker allows the user to keep track of the Studio Ghibli fil
 
 ---
 
-# <a name="app-features></a> App Features
+# <a name="app-features"></a> App Features
 
 ## Login Page
 
@@ -60,11 +60,28 @@ Each movie has its own details page.
 </h1>
 
 A user can rate the movie on a scale from 1 to 5. This rating will influence the overall site rating.
+<h1 align="center">
+    <img width=50% alt="rating-feature" src="static/img/rating_form.png">
+</h1>
 
 A user can add and remove the movie from their Watch and Seen lists.
 
+<h1 align="center">
+    <img width=50% alt="add-feature" src="static/img/add_button.png">
+    <img width=50% alt="remove-feature" src="static/img/remove_button.png">
+</h1>
+
 A user can write and read reviews of the movie.
+
+<h1 align="center">
+    <img width=75% alt="write-review-feature" src="static/img/write_review.png">
+</h1>
 
 ## User Profile
 
 Each user has their own profile page where they can view their statistics, their Watch and Seen lists, and reviews they've written.
+
+<h1 align="center">
+    <img width=75% alt="user-profile-screenshot1" src="static/img/user_profile1.png">
+    <img width=75% alt="user-profile-screenshot2" src="static/img/user_profile2.png">
+</h1>
