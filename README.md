@@ -55,7 +55,9 @@ On the homepage, users can scroll through the different Studio Ghibli films sort
 ## Movie Details
 
 Each movie has its own details page.
-![movie details page demo]("static/img/site-demo.gif")
+<h1 align="center">
+    <img width=75% alt="movie-details-page-gif" src="static/img/site-demo.gif">
+</h1>
 
 A user can rate the movie on a scale from 1 to 5. This rating will influence the overall site rating.
 
