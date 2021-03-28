@@ -67,8 +67,8 @@ A user can rate the movie on a scale from 1 to 5. This rating will influence the
 A user can add and remove the movie from their Watch and Seen lists.
 
 <h1 align="center">
-    <img width=50% alt="add-feature" src="static/img/add_button.png">
-    <img width=50% alt="remove-feature" src="static/img/remove_button.png">
+    <img width=25% alt="add-feature" src="static/img/add_button.png">
+    <img width=25% alt="remove-feature" src="static/img/remove_button.png">
 </h1>
 
 A user can write and read reviews of the movie.
