@@ -14,6 +14,7 @@ The Studio Ghibli Tracker allows the user to keep track of the Studio Ghibli fil
 # <a name="tech-stack"></a> Tech Stack 
 
 - Python
+- JavaScript
 - PostgreSQL
 - SQLAlchemy
 - jQuery
